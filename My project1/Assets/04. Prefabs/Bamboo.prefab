@@ -1,0 +1,950 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5746067914471301351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3872622889380184083}
+  - component: {fileID: -7186595924796173994}
+  m_Layer: 0
+  m_Name: Bamboo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3872622889380184083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746067914471301351}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2245195949398800541}
+  - {fileID: 6414053196964964333}
+  - {fileID: 2068718566226537512}
+  - {fileID: 1418006575051574592}
+  - {fileID: 2565335436061702955}
+  - {fileID: 4130039316702528103}
+  - {fileID: 15735485059859513}
+  - {fileID: 2482056164621607581}
+  - {fileID: 6620991066240869026}
+  - {fileID: 2761830247823705415}
+  - {fileID: 808652328890333525}
+  - {fileID: 274631134335527532}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &-7186595924796173994
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746067914471301351}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 5, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!1001 &15735485059712125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.690001
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &15735485059859513 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 15735485059712125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &274631134335347240
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 38.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &274631134335527532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 274631134335347240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &808652328890153233
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &808652328890333525 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 808652328890153233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1418006575051230468
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &1418006575051574592 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 1418006575051230468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2068718566226979948
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &2068718566226537512 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 2068718566226979948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2245195949398391001
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &2245195949398800541 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 2245195949398391001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2482056164621165273
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &2482056164621607581 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 2482056164621165273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2565335436061522799
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.440001
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &2565335436061702955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 2565335436061522799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2761830247823361283
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 35.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &2761830247823705415 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 2761830247823361283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4130039316702642723
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 28.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &4130039316702528103 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 4130039316702642723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6414053196964620201
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.859999
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &6414053196964964333 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 6414053196964620201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6620991066241016550
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872622889380184083}
+    m_Modifications:
+    - target: {fileID: 145890, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_Name
+      value: Bamboo water bottle1-2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.190001
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+--- !u!4 &6620991066240869026 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442436, guid: ee97600a192ef64498e26a89cfd15e40, type: 3}
+  m_PrefabInstance: {fileID: 6620991066241016550}
+  m_PrefabAsset: {fileID: 0}
