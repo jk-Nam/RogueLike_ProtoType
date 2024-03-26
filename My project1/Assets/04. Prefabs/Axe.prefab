@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7682125110763393990}
   m_Layer: 0
   m_Name: Axe
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   attackSpeed: 3
   range: 2
   maxCombo: 2
+  upgrade: 0
 --- !u!1 &6619771248564081515
 GameObject:
   m_ObjectHideFlags: 0

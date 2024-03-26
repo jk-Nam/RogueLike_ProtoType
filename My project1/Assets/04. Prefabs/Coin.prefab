@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2816700502907566418}
-  - component: {fileID: 1543798480353754944}
+  - component: {fileID: 8584136472247297954}
   - component: {fileID: 5382388357195302684}
   - component: {fileID: 7614452596490741185}
-  - component: {fileID: 5054204752918622286}
+  - component: {fileID: 5355488610006278074}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
---- !u!114 &1543798480353754944
+--- !u!114 &8584136472247297954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,10 +44,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2248145105998852051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7d4de8f3b802b4428d18bf323cc75f1, type: 3}
+  m_Script: {fileID: 11500000, guid: e052313f9e9464641a5ede5aba2bc5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  num: 0
+  type: 2
+  itemName: "\uC740\uC790"
+  itemDes: "\uD654\uD3D0"
+  goodsType: 2
 --- !u!33 &5382388357195302684
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98,8 +101,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5054204752918622286
-MeshCollider:
+--- !u!135 &5355488610006278074
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -116,7 +119,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5284070298690745441, guid: 827b5897ea2918c4da44be460009d41e, type: 3}
+  serializedVersion: 3
+  m_Radius: 0.0686679
+  m_Center: {x: 0, y: -4.656614e-10, z: 0}

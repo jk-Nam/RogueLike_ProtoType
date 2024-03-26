@@ -13,14 +13,6 @@ public class Goods : Item
 
     public GoodsType goodsType;
 
-    //public int CoinNum;
-
-
-    void Start()
-    {
-        
-    }
-
 
     public override void UseItem()
     {
@@ -43,13 +35,33 @@ public class Goods : Item
         }
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerStay(Collider other)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") )
         {
+            Debug.Log(this.name);
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                Debug.Log("E키가 눌렸습니다.");
+                Destroy(gameObject);
+                UseItem();
+            }
+        }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log(this.name);
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                Debug.Log("E키가 눌렸습니다.");
+                Destroy(gameObject);
+                UseItem();
+            }
+        }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log(this.name);
             Destroy(gameObject);
             UseItem();
         }
     }
-
 }

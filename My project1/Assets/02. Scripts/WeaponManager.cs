@@ -41,6 +41,7 @@ public class WeaponManager : MonoBehaviour
             case WeaponType.Sword:
                 weapon = gameObject.AddComponent<Sword>();
                 myWeapon = sword;
+                playerCtrl.anim.SetInteger("Weapon", 0);
                 playerCtrl.dmg =         sword.GetComponent<Sword>().dmg + 3 * sword.GetComponent<Sword>().upgrade;
                 playerCtrl.attackSpeed = sword.GetComponent<Sword>().attackSpeed;
                 playerCtrl.range =       sword.GetComponent<Sword>().range;
@@ -48,6 +49,7 @@ public class WeaponManager : MonoBehaviour
             case WeaponType.Axe:
                 weapon = gameObject.AddComponent<Axe>();
                 myWeapon = axe;
+                playerCtrl.anim.SetInteger("Weapon", 1);
                 playerCtrl.dmg =         axe.GetComponent<Axe>().dmg + 5 * axe.GetComponent<Axe>().upgrade;
                 playerCtrl.attackSpeed = axe.GetComponent<Axe>().attackSpeed;
                 playerCtrl.range =       axe.GetComponent<Axe>().range;
@@ -55,6 +57,7 @@ public class WeaponManager : MonoBehaviour
             case WeaponType.Bow:
                 weapon = gameObject.AddComponent<Bow>();
                 myWeapon = bow;
+                playerCtrl.anim.SetInteger("Weapon", 2);
                 playerCtrl.dmg =         bow.GetComponent<Bow>().dmg + 5 * bow.GetComponent<Bow>().upgrade;
                 playerCtrl.attackSpeed = bow.GetComponent<Bow>().attackSpeed;
                 playerCtrl.range =       bow.GetComponent<Bow>().range;
@@ -62,9 +65,10 @@ public class WeaponManager : MonoBehaviour
             default:
                 weapon = gameObject.AddComponent<Sword>();
                 myWeapon = sword;
-                playerCtrl.dmg = sword.GetComponent<Sword>().dmg;
+                playerCtrl.anim.SetInteger("Weapon", 0);
+                playerCtrl.dmg =         sword.GetComponent<Sword>().dmg;
                 playerCtrl.attackSpeed = sword.GetComponent<Sword>().attackSpeed;
-                playerCtrl.range = sword.GetComponent<Sword>().range;
+                playerCtrl.range =       sword.GetComponent<Sword>().range;
                 break;
         }
     }

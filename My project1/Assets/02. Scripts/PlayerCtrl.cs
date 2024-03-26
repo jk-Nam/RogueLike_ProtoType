@@ -22,7 +22,7 @@ public class PlayerCtrl : MonoBehaviour
     public GameObject dashEffect;
     public WeaponManager weaponMgr;
 
-    Animator anim;
+    public Animator anim;
     Rigidbody rb;
 
     public float moveSpeed = 5.0f;
