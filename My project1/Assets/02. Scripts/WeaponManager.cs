@@ -24,7 +24,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
+        playerCtrl = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerCtrl>();
     }
 
     void SetWeaponType(WeaponType weaponType)

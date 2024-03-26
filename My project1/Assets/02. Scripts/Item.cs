@@ -6,7 +6,7 @@ public enum ItemType
 {
     book = 0,
     potion = 1,
-    coin = 2
+    goods = 2
 }
 
 public abstract class Item : MonoBehaviour

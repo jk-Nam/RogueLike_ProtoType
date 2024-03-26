@@ -4,12 +4,29 @@ using UnityEngine;
 
 public class Book : Item
 {
-    
+    public enum BooksType
+    {
+        red = 1,
+        green = 2,
+        blue =3
+    }
+
+    public BooksType booksType;
+
 
     public override void UseItem()
     {
-        playerCtrl.dmg += 10.0f;
+        switch (booksType)
+        {
+            case BooksType.red:
+
+                break;
+            case BooksType.green:
+
+                break;
+            case BooksType.blue:
+
+                break;
+        }
     }
-
-
 }

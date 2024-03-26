@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = null;
 
     public int playerCoin;
+    public int playerForce;
+    public int playerSteel;
 
     private void Awake()
     {
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        playerCoin = 0;
     }
 
 
