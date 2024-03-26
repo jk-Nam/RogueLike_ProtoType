@@ -309,9 +309,10 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (other.CompareTag("EnemyWeapon") && curHp >= 0)
         {
+            if (other.GetComponent<MEnemyCtrl>().enemyState == MEnemyCtrl.ENEMYSTATE.ATTACK)
             playerState = PLAYERSTATE.HIT;
             Debug.Log("Hit!!!");
-            OnDamage();
+            OnDamage(other.GetComponent<MEnemyCtrl>().dmg);
         }
 
         if (other.CompareTag("EnemyWeapon") && curHp <= 0 && curReviveCnt > 0)
@@ -329,9 +330,9 @@ public class PlayerCtrl : MonoBehaviour
 
     }
 
-    void OnDamage()
+    void OnDamage(float _dmg)
     {
-        curHp -= 5;
+        curHp -= _dmg;
         
     }
 

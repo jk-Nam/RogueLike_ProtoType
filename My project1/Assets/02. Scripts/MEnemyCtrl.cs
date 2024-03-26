@@ -17,8 +17,12 @@ public class MEnemyCtrl : MonoBehaviour
 
     public float traceDist = 20.0f;
     public float attackDist = 2.0f;
+    public float attackDelay = 1.2f;
+    public float dmg = 5.0f;
     public bool isDie = false;
+    public bool isAttack = true;
 
+    float dwTime = 0;
     int hp = 100;
 
     Transform enemyTr;
@@ -46,8 +50,8 @@ public class MEnemyCtrl : MonoBehaviour
 
 
     void Update()
-    {
-        
+    {        
+
     }
 
     IEnumerator CheckEnemyState()
@@ -63,7 +67,7 @@ public class MEnemyCtrl : MonoBehaviour
 
             float distance = Vector3.Distance(playerTr.position, enemyTr.position);
 
-            if (distance <= attackDist)
+            if (distance <= attackDist && isAttack)
             {
                 enemyState = ENEMYSTATE.ATTACK;
             }
@@ -96,6 +100,10 @@ public class MEnemyCtrl : MonoBehaviour
                     break;
                 case ENEMYSTATE.ATTACK:
                     anim.SetBool(hashAttack, true);
+                    isAttack = false;
+                    yield return new WaitForSeconds(attackDelay);
+                    isAttack = true;
+                    enemyState = ENEMYSTATE.IDLE;
                     break;
                 case ENEMYSTATE.DIE:
                     isDie = true;
