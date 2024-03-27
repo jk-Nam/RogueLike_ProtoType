@@ -310,12 +310,31 @@ public class PlayerCtrl : MonoBehaviour
         if (other.CompareTag("EnemyWeapon") && curHp >= 0)
         {
             if (other.GetComponent<MEnemyCtrl>().enemyState == MEnemyCtrl.ENEMYSTATE.ATTACK)
-            playerState = PLAYERSTATE.HIT;
-            Debug.Log("Hit!!!");
-            OnDamage(other.GetComponent<MEnemyCtrl>().dmg);
+            {
+                playerState = PLAYERSTATE.HIT;
+                Debug.Log("Hit!!!");
+                OnDamage(other.GetComponent<MEnemyCtrl>().dmg);
+            }            
         }
 
-        if (other.CompareTag("EnemyWeapon") && curHp <= 0 && curReviveCnt > 0)
+        if (other.CompareTag("BossWeapon") && curHp >= 0)
+        {
+            if (other.GetComponentInParent<BossCtrl>().bossState == BossCtrl.BOSSSTATE.ATTACK)
+            {
+                playerState = PLAYERSTATE.HIT;
+                Debug.Log("Hit!!!");
+                OnDamage(other.GetComponent<BossCtrl>().dmg);
+            }
+        }
+
+        if (other.CompareTag("BossSkillEffect"))
+        {
+            playerState = PLAYERSTATE.HIT;
+            Debug.Log("Skill Hit");
+            OnDamage(other.GetComponent<Boss1Skill2Projectile>().dmg);
+        }
+
+        if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon")) && curHp <= 0 && curReviveCnt > 0)
         {
             Debug.Log("hp가 0보다 낮아졌습니다.");
             Revive();
@@ -327,6 +346,10 @@ public class PlayerCtrl : MonoBehaviour
             isDie = true;
             PlayerDie();
         }
+
+        
+
+
 
     }
 

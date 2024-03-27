@@ -110,6 +110,7 @@ public class MEnemyCtrl : MonoBehaviour
                     agent.isStopped = true;
                     anim.SetTrigger(hashDie);
                     GetComponent<CapsuleCollider>().enabled = false;
+                    Destroy(gameObject, 5.0f);
                     break;
                 default:
                     break;

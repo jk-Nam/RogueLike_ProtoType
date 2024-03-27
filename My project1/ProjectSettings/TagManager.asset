@@ -8,6 +8,8 @@ TagManager:
   - RandomSpawnGroup
   - EnemyWeapon
   - Weapon
+  - BossWeapon
+  - BossSkillEffect
   layers:
   - Default
   - TransparentFX
