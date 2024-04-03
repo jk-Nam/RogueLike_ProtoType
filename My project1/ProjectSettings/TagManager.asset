@@ -7,9 +7,12 @@ TagManager:
   - Enemy
   - RandomSpawnGroup
   - EnemyWeapon
-  - Weapon
   - BossWeapon
   - BossSkillEffect
+  - Wall
+  - WeaponSelect
+  - FxTemporaire
+  - AttackRange
   layers:
   - Default
   - TransparentFX

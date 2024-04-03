@@ -1247,10 +1247,10 @@ MonoBehaviour:
   hp: 1200
   rotSpeed: 500
   attackDist: 4
-  attackCoolTime: 3
+  attackCoolTime: 5
   skillDist1: 2
-  skillDist2: 10
-  skill1CoolTime: 8
+  skillDist2: 18
+  skill1CoolTime: 10
   skill2CoolTime: 15
   dmg: 10
   skill1Dmg: 13

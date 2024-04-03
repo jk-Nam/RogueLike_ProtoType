@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4446256589945536}
   - component: {fileID: 33245721044739180}
   - component: {fileID: 23669995932578118}
-  - component: {fileID: 136497092378252596}
   m_Layer: 0
   m_Name: RiceBarrel_01
   m_TagString: Untagged
@@ -26,12 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001486345846826}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.0000018081985, y: 0.044544946, z: 0.00000008062614, w: 0.9990074}
   m_LocalPosition: {x: -0.35, y: 0.41, z: -0.019}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4758116201852736}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 5.1060004, z: 0}
 --- !u!33 &33245721044739180
 MeshFilter:
@@ -52,9 +52,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -66,6 +69,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -78,20 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &136497092378252596
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001486345846826}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.23
-  m_Height: 0.76
-  m_Direction: 2
-  m_Center: {x: 0.0000008940697, y: 0.0000009909272, z: -0.0000009536743}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1092191641082200
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +94,6 @@ GameObject:
   - component: {fileID: 4468396581145340}
   - component: {fileID: 33516515206809996}
   - component: {fileID: 23467915477417256}
-  - component: {fileID: 64663658262016230}
   m_Layer: 0
   m_Name: Cart_A_Wheel_L_01
   m_TagString: Untagged
@@ -118,12 +108,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092191641082200}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.0000018099951, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -0.6714}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4758116201852736}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33516515206809996
 MeshFilter:
@@ -144,9 +135,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -158,6 +152,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -170,20 +165,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &64663658262016230
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092191641082200}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 304aca67383a6534caa66a8b65cdffa6, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1122342901627084
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +177,6 @@ GameObject:
   - component: {fileID: 4098752518741480}
   - component: {fileID: 33343927662149426}
   - component: {fileID: 23472331664298356}
-  - component: {fileID: 136003118632896004}
   m_Layer: 0
   m_Name: RiceBarrel_01 (4)
   m_TagString: Untagged
@@ -210,12 +191,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122342901627084}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.036984056, y: 0.034848414, z: -0.28905192, w: 0.9559638}
   m_LocalPosition: {x: -0.161, y: 0.759, z: 0.034}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4758116201852736}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -2.8980002, y: 5.056, z: -33.775}
 --- !u!33 &33343927662149426
 MeshFilter:
@@ -236,9 +218,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -250,6 +235,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -262,20 +248,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &136003118632896004
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122342901627084}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.23
-  m_Height: 0.76
-  m_Direction: 2
-  m_Center: {x: 0.0000008940697, y: 0.0000009909272, z: -0.0000009536743}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1282842754980130
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +260,7 @@ GameObject:
   - component: {fileID: 4758116201852736}
   - component: {fileID: 33137975331020878}
   - component: {fileID: 23980186001949252}
-  - component: {fileID: 64575862828242278}
+  - component: {fileID: 3072225860186377520}
   m_Layer: 0
   m_Name: Cart_A_02
   m_TagString: Untagged
@@ -302,9 +275,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282842754980130}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4546165031449304}
   - {fileID: 4468396581145340}
@@ -316,7 +291,6 @@ Transform:
   - {fileID: 4098752518741480}
   - {fileID: 4209683851204096}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33137975331020878
 MeshFilter:
@@ -337,9 +311,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -351,6 +328,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -363,20 +341,28 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &64575862828242278
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3072225860186377520
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282842754980130}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 8e6bc8a935f254744844b61a56b85948, type: 3}
+  m_Size: {x: 3.4307394, y: 1.5211747, z: 1.2032286}
+  m_Center: {x: -0.2707523, y: 0.19436583, z: -0.0012926459}
 --- !u!1 &1337366160872998
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +374,6 @@ GameObject:
   - component: {fileID: 4893887690464504}
   - component: {fileID: 33309327310913648}
   - component: {fileID: 23331390405194116}
-  - component: {fileID: 136960706614427402}
   m_Layer: 0
   m_Name: RiceBarrel_01 (2)
   m_TagString: Untagged
@@ -403,12 +388,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337366160872998}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.041300464, y: -0, z: -0, w: 0.9991468}
   m_LocalPosition: {x: 0.45400047, y: 0.4100001, z: 0.00000042315241}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4758116201852736}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -4.734, y: 0, z: 0}
 --- !u!33 &33309327310913648
 MeshFilter:
@@ -429,9 +415,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -443,6 +432,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -455,20 +445,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &136960706614427402
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337366160872998}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.23
-  m_Height: 0.76
-  m_Direction: 2
-  m_Center: {x: 0.0000008940697, y: 0.0000009909272, z: -0.0000009536743}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1339945126918386
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +457,6 @@ GameObject:
   - component: {fileID: 4209683851204096}
   - component: {fileID: 33105993676228144}
   - component: {fileID: 23387024937070670}
-  - component: {fileID: 136228193909551898}
   m_Layer: 0
   m_Name: RiceBarrel_01 (5)
   m_TagString: Untagged
@@ -495,12 +471,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339945126918386}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.0000017296139, y: 0.00000053340284, z: -0.2946985, w: 0.9555903}
   m_LocalPosition: {x: 0.034000397, y: 1.068, z: -0.036}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4758116201852736}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -34.279003}
 --- !u!33 &33105993676228144
 MeshFilter:
@@ -521,9 +498,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -535,6 +515,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -547,20 +528,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &136228193909551898
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339945126918386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.23
-  m_Height: 0.76
-  m_Direction: 2
-  m_Center: {x: 0.0000008940697, y: 0.0000009909272, z: -0.0000009536743}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1408663441199750
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +540,6 @@ GameObject:
   - component: {fileID: 4546165031449304}
   - component: {fileID: 33985571551828492}
   - component: {fileID: 23961989654469244}
-  - component: {fileID: 64665215415873784}
   m_Layer: 0
   m_Name: Cart_A_Wheel_R_01
   m_TagString: Untagged
@@ -587,12 +554,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408663441199750}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.0000018099951, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0.647}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4758116201852736}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33985571551828492
 MeshFilter:
@@ -613,9 +581,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -627,6 +598,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -639,20 +611,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &64665215415873784
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408663441199750}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 6ba6d7ed6d9d77644b8c81ec6436f0dd, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1599743135963036
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,12 +637,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599743135963036}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.0000018099951, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4758116201852736}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33727008302872284
 MeshFilter:
@@ -704,9 +664,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -718,6 +681,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -730,6 +694,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1611178472595198
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +706,6 @@ GameObject:
   - component: {fileID: 4756406038575792}
   - component: {fileID: 33727684219132504}
   - component: {fileID: 23397597391529298}
-  - component: {fileID: 136861353569081448}
   m_Layer: 0
   m_Name: RiceBarrel_01 (1)
   m_TagString: Untagged
@@ -756,12 +720,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611178472595198}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.0000017906191, y: -0.0000002641323, z: 0.14592987, w: 0.989295}
   m_LocalPosition: {x: 0.045000076, y: 0.41, z: -0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4758116201852736}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 16.782001}
 --- !u!33 &33727684219132504
 MeshFilter:
@@ -782,9 +747,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -796,6 +764,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -808,20 +777,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &136861353569081448
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611178472595198}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.23
-  m_Height: 0.76
-  m_Direction: 2
-  m_Center: {x: 0.0000008940697, y: 0.0000009909272, z: -0.0000009536743}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1756871709763086
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +789,6 @@ GameObject:
   - component: {fileID: 4279069679084872}
   - component: {fileID: 33827345799373744}
   - component: {fileID: 23480182663663710}
-  - component: {fileID: 136637372475576734}
   m_Layer: 0
   m_Name: RiceBarrel_01 (3)
   m_TagString: Untagged
@@ -848,12 +803,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756871709763086}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.004664245, y: -0.015508509, z: 0.287883, w: 0.95752865}
   m_LocalPosition: {x: 0.235, y: 0.756, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4758116201852736}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 1.023, y: -1.5480001, z: 33.453003}
 --- !u!33 &33827345799373744
 MeshFilter:
@@ -874,9 +830,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -888,6 +847,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -900,17 +860,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &136637372475576734
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756871709763086}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.23
-  m_Height: 0.76
-  m_Direction: 2
-  m_Center: {x: 0.0000008940697, y: 0.0000009909272, z: -0.0000009536743}
+  m_AdditionalVertexStreams: {fileID: 0}

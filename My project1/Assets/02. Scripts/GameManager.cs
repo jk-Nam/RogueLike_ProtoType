@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int playerCoin;
     public int playerForce;
     public int playerSteel;
+    public bool isClear = false;
 
     private void Awake()
     {

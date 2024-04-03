@@ -19,8 +19,11 @@ public class PlayerCtrl : MonoBehaviour
     
     public PLAYERSTATE playerState;
 
-    public GameObject dashEffect;
     public WeaponManager weaponMgr;
+
+    public GameObject dashEffect;
+    public GameObject attackRange;
+    public GameObject attackEffect;
 
     public Animator anim;
     Rigidbody rb;
@@ -37,8 +40,8 @@ public class PlayerCtrl : MonoBehaviour
     public int curDashCnt = 0;
     public int maxSkillCnt = 1;
     public int curSkillCnt = 0;
-    public int maxReviveCnt = 1; 
-    public int curReviveCnt = 0;
+    public int maxLifeCnt = 1; 
+    public int curLifeCnt = 0;
 
 
     float attackDelay = 0.0f;
@@ -74,7 +77,7 @@ public class PlayerCtrl : MonoBehaviour
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
 
         curHp = maxHp;
-        curReviveCnt = maxReviveCnt;
+        curLifeCnt = maxLifeCnt;
         curSkillCnt = maxSkillCnt;
         isDie = false;
     }
@@ -95,6 +98,7 @@ public class PlayerCtrl : MonoBehaviour
             if (dwTime >= skillRecevery)
             {
                 curSkillCnt++;
+                UIManager.Instance.UpdateSkill();
                 dwTime = 0;
                 if (curSkillCnt > maxSkillCnt)
                     curSkillCnt = maxSkillCnt;
@@ -139,6 +143,7 @@ public class PlayerCtrl : MonoBehaviour
                 isHit = true;
                 anim.SetTrigger("Hit");
                 curHitCnt += Time.deltaTime;
+                UIManager.Instance.UpdateHpBar();
 
                 AnimatorClipInfo[] curClipInfos;
                 curClipInfos = anim.GetCurrentAnimatorClipInfo(0);
@@ -161,8 +166,10 @@ public class PlayerCtrl : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !isHit && attackDelay >= 0.3f)
         {
-            playerState = PLAYERSTATE.ATTACK;
+            playerState = PLAYERSTATE.ATTACK;            
+            StartCoroutine(AttackOn());
             StartCoroutine(Combo());
+            StartCoroutine(EffectOnOff());
         }
             
         if (Input.GetMouseButtonDown(1) && !isHit)
@@ -171,14 +178,10 @@ public class PlayerCtrl : MonoBehaviour
             StartCoroutine(SAttack());
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && !isHit)
+        if (Input.GetKeyDown(KeyCode.Q) && !isHit && curSkillCnt > 0)
         {
             playerState = PLAYERSTATE.SKILL;
-            if (curSkillCnt > 0)
-            {
-                StartCoroutine(Skill());
-            }
-            
+            StartCoroutine(Skill());
         }
             
         
@@ -298,11 +301,19 @@ public class PlayerCtrl : MonoBehaviour
             }
 
             curSkillCnt--;
+            UIManager.Instance.UpdateSkill();
             Debug.Log("Fire Ball!!!");
             anim.SetTrigger("Skill");
             yield return new WaitForSeconds(1.0f);
             playerState = PLAYERSTATE.IDLE;
         }        
+    }
+
+    IEnumerator EffectOnOff()
+    {
+        attackEffect.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        attackEffect.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -334,23 +345,19 @@ public class PlayerCtrl : MonoBehaviour
             OnDamage(other.GetComponent<Boss1Skill2Projectile>().dmg);
         }
 
-        if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon")) && curHp <= 0 && curReviveCnt > 0)
+        if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon")) && curHp <= 0 && curLifeCnt > 0)
         {
             Debug.Log("hp가 0보다 낮아졌습니다.");
             Revive();
+            UIManager.Instance.UpdateLife();
         }
 
-        if (other.CompareTag("EnemyWeapon") && curHp <= 0 && curReviveCnt <= 0)
+        if (other.CompareTag("EnemyWeapon") && curHp <= 0 && curLifeCnt <= 0)
         {
             playerState = PLAYERSTATE.DEATH;
             isDie = true;
             PlayerDie();
         }
-
-        
-
-
-
     }
 
     void OnDamage(float _dmg)
@@ -361,7 +368,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void Revive()
     {
-        curReviveCnt--;
+        curLifeCnt--;
         curHp = maxHp;
         Debug.Log("Revive!!!");
     }
@@ -371,7 +378,12 @@ public class PlayerCtrl : MonoBehaviour
         isDie = false;
         yield return new WaitForSeconds(5.0f);
         Debug.Log("Player Die... 마을로 돌아갑니다.");
-
     }
 
+    IEnumerator AttackOn()
+    {
+        attackRange.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+        attackRange.SetActive(false);
+    }
 }

@@ -18,6 +18,9 @@ public class WeaponManager : MonoBehaviour
 
     IWeapon weapon;
 
+    public GameObject swordPos;
+    public GameObject axePos;
+    public GameObject bowPos;
     public GameObject sword;
     public GameObject axe;
     public GameObject bow;
@@ -39,6 +42,9 @@ public class WeaponManager : MonoBehaviour
         switch (weaponType)
         {
             case WeaponType.Sword:
+                swordPos.SetActive(true);
+                axePos.SetActive(false);
+                bowPos.SetActive(false);
                 weapon = gameObject.AddComponent<Sword>();
                 myWeapon = sword;
                 playerCtrl.anim.SetInteger("Weapon", 0);
@@ -47,6 +53,9 @@ public class WeaponManager : MonoBehaviour
                 playerCtrl.range =       sword.GetComponent<Sword>().range;
                 break;
             case WeaponType.Axe:
+                swordPos.SetActive(false);
+                axePos.SetActive(true);
+                bowPos.SetActive(false);
                 weapon = gameObject.AddComponent<Axe>();
                 myWeapon = axe;
                 playerCtrl.anim.SetInteger("Weapon", 1);
@@ -55,6 +64,9 @@ public class WeaponManager : MonoBehaviour
                 playerCtrl.range =       axe.GetComponent<Axe>().range;
                 break;
             case WeaponType.Bow:
+                swordPos.SetActive(false);
+                axePos.SetActive(false);
+                bowPos.SetActive(true);
                 weapon = gameObject.AddComponent<Bow>();
                 myWeapon = bow;
                 playerCtrl.anim.SetInteger("Weapon", 2);
@@ -63,6 +75,9 @@ public class WeaponManager : MonoBehaviour
                 playerCtrl.range =       bow.GetComponent<Bow>().range;
                 break;
             default:
+                swordPos.SetActive(true);
+                axePos.SetActive(false);
+                bowPos.SetActive(false);
                 weapon = gameObject.AddComponent<Sword>();
                 myWeapon = sword;
                 playerCtrl.anim.SetInteger("Weapon", 0);
@@ -119,4 +134,6 @@ public class WeaponManager : MonoBehaviour
         weapon.Skill();
         Debug.Log("Skill!!!");
     }
+
+
 }

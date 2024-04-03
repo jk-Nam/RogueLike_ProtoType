@@ -10,10 +10,14 @@ public class MEnemyCtrl : MonoBehaviour
         IDLE = 0,
         TRACE = 1,
         ATTACK = 2,
-        DIE = 3
+        HIT = 3,
+        DIE = 4
     }
 
     public ENEMYSTATE enemyState;
+
+    PlayerCtrl playerCtrl;
+    SpawnEnemy spawnEnemy;
 
     public float traceDist = 20.0f;
     public float attackDist = 2.0f;
@@ -21,9 +25,10 @@ public class MEnemyCtrl : MonoBehaviour
     public float dmg = 5.0f;
     public bool isDie = false;
     public bool isAttack = true;
+    public bool isHit = false;
 
-    float dwTime = 0;
-    int hp = 100;
+    public float maxHp = 80.0f;
+    public float curHp = 0;
 
     Transform enemyTr;
     Transform playerTr;
@@ -39,11 +44,15 @@ public class MEnemyCtrl : MonoBehaviour
     void Start()
     {
         enemyTr = GetComponent<Transform>();
-        playerTr = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        playerCtrl = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();
+        playerTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        spawnEnemy = GameObject.FindGameObjectWithTag("RandomSpawnGroup")?.GetComponent<SpawnEnemy>();
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         StartCoroutine(CheckEnemyState());
         StartCoroutine(EnemyAction());
+
+        curHp = maxHp;
     }
 
 
@@ -58,7 +67,7 @@ public class MEnemyCtrl : MonoBehaviour
     {
         while (!isDie)
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(1.0f);
 
             if (enemyState == ENEMYSTATE.DIE)
             {
@@ -99,16 +108,27 @@ public class MEnemyCtrl : MonoBehaviour
                     agent.isStopped = false;
                     break;
                 case ENEMYSTATE.ATTACK:
+                    agent.isStopped = true;
+                    transform.LookAt(playerTr.position);
                     anim.SetBool(hashAttack, true);
                     isAttack = false;
                     yield return new WaitForSeconds(attackDelay);
                     isAttack = true;
-                    enemyState = ENEMYSTATE.IDLE;
+                    if (!isAttack)
+                        enemyState = ENEMYSTATE.IDLE;
+                    break;
+                case ENEMYSTATE.HIT:
+                    anim.SetTrigger(hashHit);
+                    curHp -= playerCtrl.dmg;
+                    agent.isStopped = false;
                     break;
                 case ENEMYSTATE.DIE:
                     isDie = true;
                     agent.isStopped = true;
                     anim.SetTrigger(hashDie);
+                    spawnEnemy.curMonsterCnt--;                    
+                    spawnEnemy.CheckEnemy();
+                    StopAllCoroutines();
                     GetComponent<CapsuleCollider>().enabled = false;
                     Destroy(gameObject, 5.0f);
                     break;
@@ -134,4 +154,16 @@ public class MEnemyCtrl : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AttackRange") && curHp > 0)
+        {
+            enemyState = ENEMYSTATE.HIT;
+        }
+
+        if (other.CompareTag("AttackRange") && curHp < 0)
+        {
+            enemyState = ENEMYSTATE.DIE;
+        }
+    }
 }

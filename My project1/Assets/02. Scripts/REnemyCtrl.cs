@@ -11,18 +11,24 @@ public class REnemyCtrl : MonoBehaviour
         IDLE = 0,
         MOVE = 1,
         ATTACK = 2,
-        DIE = 3
+        HIT = 3,
+        DIE = 4
     }
 
     public ENEMYSTATE enemyState;
 
+    PlayerCtrl playerCtrl;
+    SpawnEnemy spawnEnemy;
+
     public float minDistance = 10.0f;
-    public float attackDistance = 15.0f;
-    public float maxMoveDistance = 2.0f;
+    public float attackDistance = 10.0f;
+    public float maxMoveDistance = 15.0f;
 
     public bool isDie = false;
 
-    int hp = 85;
+    
+    public float maxHp = 85;
+    public float curHp = 0;
 
     Transform enemyTr;
     Transform playerTr;
@@ -38,12 +44,16 @@ public class REnemyCtrl : MonoBehaviour
 
     void Start()
     {
+        playerCtrl = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerCtrl>();
         enemyTr = GetComponent<Transform>();
-        playerTr = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        playerTr = GameObject.FindWithTag("Player")?.GetComponent<Transform>();
+        spawnEnemy = GameObject.FindGameObjectWithTag("RandomSpawnGroup")?.GetComponent<SpawnEnemy>();
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         StartCoroutine(CheckEnemyState());
         StartCoroutine(EnemyAction());
+
+        curHp = maxHp;
     }
 
     void Update()
@@ -62,9 +72,8 @@ public class REnemyCtrl : MonoBehaviour
                 yield break;
             }
 
-            float distance = Vector3.Distance(playerTr.position, enemyTr.position);
+            float distance = Vector3.Distance(playerTr.position, enemyTr.position);            
 
-            
             if (distance <= minDistance)
             {
                 enemyState = ENEMYSTATE.MOVE;
@@ -77,6 +86,7 @@ public class REnemyCtrl : MonoBehaviour
             {
                 enemyState = ENEMYSTATE.IDLE;
             }
+            yield return new WaitForSeconds(3.0f);
         }
     }
 
@@ -91,23 +101,34 @@ public class REnemyCtrl : MonoBehaviour
                     anim.SetBool(hashMove, false);
                     break;
                 case ENEMYSTATE.MOVE:
-                    //Vector3 dir = (playerTr.position - enemyTr.position).normalized;
+                    Vector3 dir = (playerTr.position - enemyTr.position).normalized;
+                    Vector3 movePos = enemyTr.position - dir * Random.Range(5.0f ,maxMoveDistance);
+                    agent.SetDestination(movePos);
                     
-                    
-                    //agent.SetDestination();
-                    //anim.SetBool(hashMove, true);
-                    //anim.SetBool(hashAttack, false);
-                    //agent.isStopped = false;
-                    //break;
+                    anim.SetBool(hashMove, true);
+                    anim.SetBool(hashAttack, false);
+                    agent.isStopped = false;
+                    break;
                 case ENEMYSTATE.ATTACK:
-                    Quaternion newRotation = Quaternion.LookRotation(playerTr.position);
-                    transform.rotation = newRotation;
+                    Vector3 direction = playerTr.position - transform.position;
+                    direction.y = 0f;
+                    Quaternion targetRotation = Quaternion.LookRotation(direction);
+                    targetRotation *= Quaternion.Euler(0, 90, 0);
+                    transform.rotation = targetRotation;
                     anim.SetBool(hashAttack, true);
+                    break;
+                case ENEMYSTATE.HIT:
+                    anim.SetTrigger(hashHit);
+                    curHp -= playerCtrl.dmg;
+                    agent.isStopped = false;
                     break;
                 case ENEMYSTATE.DIE:
                     isDie = true;
                     agent.isStopped = true;
                     anim.SetTrigger(hashDie);
+                    spawnEnemy.curMonsterCnt--;
+                    spawnEnemy.CheckEnemy();
+                    StopAllCoroutines();
                     GetComponent<CapsuleCollider>().enabled = false;
                     break;
                 default:
@@ -132,4 +153,16 @@ public class REnemyCtrl : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AttackRange") && curHp > 0)
+        {
+            enemyState = ENEMYSTATE.HIT;
+        }
+
+        if (other.CompareTag("AttackRange") && curHp <= 0)
+        {
+            enemyState = ENEMYSTATE.DIE;
+        }
+    }
 }

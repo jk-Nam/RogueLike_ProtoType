@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book_Green
       objectReference: {fileID: 0}
+    - target: {fileID: 1108074270422607624, guid: 71fd479657168ee46b7e49843996a321, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6117223702295574906, guid: 71fd479657168ee46b7e49843996a321, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -388,6 +392,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Steel
       objectReference: {fileID: 0}
+    - target: {fileID: 4202719468892172190, guid: d098dcb8e7a6e75468277c19fb2eb74c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -444,6 +452,10 @@ PrefabInstance:
     - target: {fileID: 6746895736684640056, guid: a60e410cc84aa374b93da59da60475ad, type: 3}
       propertyPath: m_Name
       value: Force
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746895736684640056, guid: a60e410cc84aa374b93da59da60475ad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -681,6 +693,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myWeapon: {fileID: 0}
+  swordPos: {fileID: 0}
+  axePos: {fileID: 0}
+  bowPos: {fileID: 0}
   sword: {fileID: 8648509376489127191, guid: 343bbb79ea2266249b2848263419b3ae, type: 3}
   axe: {fileID: 4298581473014507375, guid: 94648bb4c2a2025439f07a8794276dbc, type: 3}
   bow: {fileID: 5828559671238678596, guid: 174bb2020a2b3964b93bb457469c4b95, type: 3}
@@ -710,6 +725,10 @@ PrefabInstance:
     - target: {fileID: 2248145105998852051, guid: 7e07e0924edcba84d94a0b4bb0e159d7, type: 3}
       propertyPath: m_Name
       value: Coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2248145105998852051, guid: 7e07e0924edcba84d94a0b4bb0e159d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2816700502907566418, guid: 7e07e0924edcba84d94a0b4bb0e159d7, type: 3}
       propertyPath: m_LocalScale.x
@@ -901,6 +920,10 @@ PrefabInstance:
     - target: {fileID: 188767594073959616, guid: 8f344d774b356e1438226985713c0e25, type: 3}
       propertyPath: m_Name
       value: Book_Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 188767594073959616, guid: 8f344d774b356e1438226985713c0e25, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4646770796622591745, guid: 8f344d774b356e1438226985713c0e25, type: 3}
       propertyPath: m_LocalScale.x
@@ -1130,6 +1153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book_Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 1521177076220556221, guid: 41cc23c8f15d2b947a334c8f326d0cc5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1190,6 +1217,10 @@ PrefabInstance:
     - target: {fileID: 7685850685240693704, guid: 610b55b94889cee48ad0787f4091067c, type: 3}
       propertyPath: m_Name
       value: Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685850685240693704, guid: 610b55b94889cee48ad0787f4091067c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -7,14 +7,15 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject mEnemy;
     public GameObject rEnemy;
 
-    public List<GameObject> liveEnemy;
-
     public List<Transform> points = new List<Transform>();
+    public List<Transform> usedPoints = new List<Transform>();
+
+    public int curMonsterCnt = 0;
+    public int stageNum = 1;
 
     int curSpawnCnt = 0;
     int maxSpawnCnt = 3;
     int maxMonsterCnt = 10;
-    public int curMonsterCnt = 0;
 
 
     void Start()
@@ -26,7 +27,6 @@ public class SpawnEnemy : MonoBehaviour
         }
 
         CreateEnemy();
-        StartCoroutine(CheckEnemy());
     }
 
 
@@ -38,23 +38,55 @@ public class SpawnEnemy : MonoBehaviour
 
     void CreateEnemy()
     {
-        curSpawnCnt++;        
-        for (int i = 0; i < maxMonsterCnt; ++i)
+        curSpawnCnt++;
+        
+        if (stageNum == 1)
         {
-            int idx = Random.Range(0, points.Count);
-            Instantiate(mEnemy, points[idx].position, points[idx].rotation);
-            curMonsterCnt = maxMonsterCnt;
+            for (int i = 0; i < maxMonsterCnt; i++)
+            {
+                int idx = GetRandomNum();
+                Instantiate(mEnemy, points[idx].position, points[idx].rotation);
+                usedPoints.Add(points[idx]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < maxMonsterCnt / 2; i++)
+            {
+                int idx = GetRandomNum();
+                Instantiate(mEnemy, points[idx].position, points[idx].rotation);
+                usedPoints.Add(points[idx]);  
+                
+                int idx2 = GetRandomNum();
+                Instantiate(rEnemy, points[idx2].position, points[idx2].rotation);
+                usedPoints.Add(points[idx2]);
+            }
+        }
+
+        curMonsterCnt = maxMonsterCnt;
+    }
+
+    public void CheckEnemy()
+    {
+        if (curMonsterCnt == 0 && curSpawnCnt < maxSpawnCnt)
+        {
+            CreateEnemy();
+            GameManager.Instance.isClear = false;
+        }
+
+        if (curMonsterCnt ==0 && curSpawnCnt >= maxSpawnCnt)
+        {
+            GameManager.Instance.isClear = true;
         }
     }
 
-    IEnumerator CheckEnemy()
+    int GetRandomNum()
     {
-        yield return new WaitForSeconds(3.0f);
-        
-
-        if (liveEnemy == null && curSpawnCnt <= maxSpawnCnt)
+        int idx = Random.Range(0, points.Count);
+        while (usedPoints.Contains(points[idx]))
         {
-            CreateEnemy();
+            idx = Random.Range(0, points.Count);
         }
+        return idx;
     }
 }

@@ -13,6 +13,17 @@ public class Goods : Item
 
     public GoodsType goodsType;
 
+    bool isContact = false;
+
+    private void Update()
+    {
+        if (isContact && Input.GetKeyUp(KeyCode.E))
+        {
+            Debug.Log("E키가 눌렸습니다.");
+            Destroy(gameObject);
+            UseItem();
+        }
+    }
 
     public override void UseItem()
     {
@@ -20,48 +31,38 @@ public class Goods : Item
         {
             case GoodsType.Force:
                 GameManager.Instance.playerForce += 10;
+                UIManager.Instance.UpdateForce();
                 break;
             case GoodsType.Coin:
                 int CoinNum;
                 int rnum = Random.Range(10, 26);
                 CoinNum = rnum;
                 GameManager.Instance.playerCoin += CoinNum;
+                UIManager.Instance.UpdateCoin();
                 break;
             case GoodsType.Steel:
                 GameManager.Instance.playerSteel++;
+                UIManager.Instance.UpdateSteel();
                 break;
             default:
                 break;
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") )
         {
-            Debug.Log(this.name);
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                Debug.Log("E키가 눌렸습니다.");
-                Destroy(gameObject);
-                UseItem();
-            }
-        }
-        else if (other.gameObject.CompareTag("Player"))
+            isContact = true;
+        }       
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log(this.name);
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                Debug.Log("E키가 눌렸습니다.");
-                Destroy(gameObject);
-                UseItem();
-            }
+            isContact = false;
         }
-        else if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log(this.name);
-            Destroy(gameObject);
-            UseItem();
-        }
+
     }
 }
