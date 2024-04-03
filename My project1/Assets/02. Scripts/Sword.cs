@@ -9,6 +9,7 @@ public class Sword : MonoBehaviour, IWeapon
     public float range = 1.0f;
     public int maxCombo = 3;
     public int upgrade = 0;
+    public int needSteel = 1;
 
 
     public void Attack()
@@ -24,5 +25,12 @@ public class Sword : MonoBehaviour, IWeapon
     public void Skill()
     {
         
+    }
+
+    public void Upgrade()
+    {
+            upgrade++;
+            GameManager.Instance.playerSteel -= needSteel;
+            needSteel++;          
     }
 }

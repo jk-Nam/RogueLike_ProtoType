@@ -2190,6 +2190,7 @@ MonoBehaviour:
   playerCoin: 0
   playerForce: 0
   playerSteel: 0
+  isClear: 0
 --- !u!114 &326252341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2213,6 +2214,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  rewardImage: []
+  rewardName: []
+  rewardDes: []
+  selectedReward: []
 --- !u!4 &326252342
 Transform:
   m_ObjectHideFlags: 0
@@ -9497,6 +9502,18 @@ PrefabInstance:
       value: training_dummy
       objectReference: {fileID: 0}
     - target: {fileID: 5360683131785772904, guid: 0331b169005eb1d469455efaa6b9024a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360683131785772904, guid: 0331b169005eb1d469455efaa6b9024a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360683131785772904, guid: 0331b169005eb1d469455efaa6b9024a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360683131785772904, guid: 0331b169005eb1d469455efaa6b9024a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.234
       objectReference: {fileID: 0}
@@ -9985,12 +10002,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 888179529}
-  weaponStand: {fileID: 0}
-  quest: {fileID: 0}
-  upgrade: {fileID: 0}
+  weaponStandUI: {fileID: 0}
+  questUI: {fileID: 0}
   pressEQ: {fileID: 0}
+  upgradeUI: {fileID: 0}
   pressEU: {fileID: 0}
   pressES: {fileID: 0}
+  pressEStage: {fileID: 0}
+  rewardUI: {fileID: 0}
+  weaponUpgradeUI: {fileID: 0}
   curHp: {fileID: 1971113160}
   maxHp: {fileID: 2051270680}
   curSkill: {fileID: 1120031323}

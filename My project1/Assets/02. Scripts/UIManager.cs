@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public GameObject pressES;
     public GameObject pressEStage;
     public GameObject rewardUI;
+    public GameObject weaponUpgradeUI;
 
 
     public Text curHp;

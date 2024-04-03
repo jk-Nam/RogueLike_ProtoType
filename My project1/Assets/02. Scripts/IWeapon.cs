@@ -14,4 +14,7 @@ public interface IWeapon
 
     void Skill();
 
+
+    void Upgrade();
+
 }
