@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  itemImage: {fileID: 21300000, guid: 1983353a474c36e4bb583d7a4857133e, type: 3}
+  itemSprite: {fileID: 21300000, guid: 1983353a474c36e4bb583d7a4857133e, type: 3}
   itemName: "\uD30C\uB780 \uBE44\uAE09\uC11C"
   itemDes: "\uD50C\uB808\uC774\uC5B4 \uC774\uB3D9\uC18D\uB3C4 +20% \uC99D\uAC00"
   booksType: 3

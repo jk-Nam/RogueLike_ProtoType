@@ -156,6 +156,7 @@ MonoBehaviour:
   playerCoin: 0
   playerForce: 0
   playerSteel: 0
+  isClear: 0
 --- !u!114 &186586242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  rewardImage: []
+  rewardName: []
+  rewardDes: []
+  selectedReward: []
 --- !u!4 &186586243
 Transform:
   m_ObjectHideFlags: 0

@@ -22,15 +22,15 @@ public class QuestManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E)) 
             {
-                UIManager.Instance.quest.SetActive(true);
+                UIManager.Instance.questUI.SetActive(true);
             }            
         }
 
-        if (UIManager.Instance.quest.activeSelf)
+        if (UIManager.Instance.questUI.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                UIManager.Instance.quest.SetActive(false);
+                UIManager.Instance.questUI.SetActive(false);
             }
         }
     }

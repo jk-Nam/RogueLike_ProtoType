@@ -20,6 +20,12 @@ public class Book : Item
 
     public BooksType booksType;
 
+
+    private void Start()
+    {
+        itemSprite = GetComponent<Sprite>();
+    }
+
     public override void UseItem()
     {
         switch (booksType)

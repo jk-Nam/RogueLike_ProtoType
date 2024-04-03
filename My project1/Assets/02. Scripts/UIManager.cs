@@ -9,13 +9,15 @@ public class UIManager : MonoBehaviour
     PlayerCtrl playerCtrl;
 
     public GameObject playerInfo;
-    public GameObject weaponStand;
-    public GameObject quest;
-    public GameObject upgrade;
+    public GameObject weaponStandUI;
+    public GameObject questUI;
     public GameObject pressEQ;
+    public GameObject upgradeUI;
     public GameObject pressEU;
     public GameObject pressES;
     public GameObject pressEStage;
+    public GameObject rewardUI;
+
 
     public Text curHp;
     public Text maxHp;

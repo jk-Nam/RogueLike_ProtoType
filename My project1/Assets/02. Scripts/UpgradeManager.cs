@@ -21,15 +21,15 @@ public class UpgradeManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                UIManager.Instance.upgrade.SetActive(true);
+                UIManager.Instance.upgradeUI.SetActive(true);
             }
         }
 
-        if (UIManager.Instance.upgrade.activeSelf)
+        if (UIManager.Instance.upgradeUI.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                UIManager.Instance.upgrade.SetActive(false);
+                UIManager.Instance.upgradeUI.SetActive(false);
             }
         }
     }

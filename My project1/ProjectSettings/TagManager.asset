@@ -11,8 +11,9 @@ TagManager:
   - BossSkillEffect
   - Wall
   - WeaponSelect
-  - FxTemporaire
   - AttackRange
+  - Weapon
+  - RewardManager
   layers:
   - Default
   - TransparentFX

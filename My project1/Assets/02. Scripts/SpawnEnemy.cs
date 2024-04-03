@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
+    RewardManager rewardManager;
+
     public GameObject mEnemy;
     public GameObject rEnemy;
 
@@ -17,6 +19,10 @@ public class SpawnEnemy : MonoBehaviour
     int maxSpawnCnt = 3;
     int maxMonsterCnt = 10;
 
+    private void Awake()
+    {
+        rewardManager = GameObject.FindGameObjectWithTag("RewardManager")?.GetComponent<RewardManager>();
+    }
 
     void Start()
     {
@@ -77,6 +83,8 @@ public class SpawnEnemy : MonoBehaviour
         if (curMonsterCnt ==0 && curSpawnCnt >= maxSpawnCnt)
         {
             GameManager.Instance.isClear = true;
+            rewardManager.RandomReward(3);
+            UIManager.Instance.rewardUI.SetActive(true);
         }
     }
 

@@ -16,14 +16,15 @@ public abstract class Item : MonoBehaviour
 
     protected PlayerCtrl playerCtrl;
 
-    public Sprite itemImage;
+    protected void Awake()
+    {
+        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
+    }
+
+    public Sprite itemSprite;
     public string itemName;
     public string itemDes;
 
-    protected void Awake()
-    {
-        playerCtrl = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerCtrl>();
-    }
 
     public abstract void UseItem();
   

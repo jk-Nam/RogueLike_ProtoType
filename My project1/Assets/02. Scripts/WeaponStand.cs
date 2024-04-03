@@ -14,7 +14,7 @@ public class WeaponStand : MonoBehaviour
 
     void Update()
     {
-        if (UIManager.Instance.weaponStand.activeSelf)
+        if (UIManager.Instance.weaponStandUI.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -35,7 +35,7 @@ public class WeaponStand : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UIManager.Instance.weaponStand.SetActive(true);
+            UIManager.Instance.weaponStandUI.SetActive(true);
             UIManager.Instance.playerInfo.SetActive(false);
         }
     }
@@ -44,7 +44,7 @@ public class WeaponStand : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UIManager.Instance.weaponStand.SetActive(false);
+            UIManager.Instance.weaponStandUI.SetActive(false);
             UIManager.Instance.playerInfo.SetActive(true);
         }
             

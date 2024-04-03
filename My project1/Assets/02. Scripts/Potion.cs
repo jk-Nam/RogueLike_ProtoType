@@ -5,7 +5,6 @@ using UnityEngine;
 public class Potion : Item
 {
 
-
     public override void UseItem()
     {
         playerCtrl.curHp += playerCtrl.maxHp * 0.3f;
