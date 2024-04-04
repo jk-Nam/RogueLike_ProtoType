@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
@@ -18,9 +17,11 @@ public class PlayerCtrl : MonoBehaviour
     }
     
     public PLAYERSTATE playerState;
+    public IWeapon weapon;
 
     public WeaponManager weaponMgr;
 
+    public GameObject curWeapon;
     public GameObject dashEffect;
     public GameObject attackRange;
     public GameObject attackEffect;
@@ -36,22 +37,20 @@ public class PlayerCtrl : MonoBehaviour
     public float dmg = 10.0f;
     public float attackSpeed = 1.0f;
     public float range = 1.0f;
+    public float attackDelay = 0.0f;
+    public float sAttackDelay = 0.0f;
+    public float sAttackCoolTime = 2.0f;
+    public float skillDelay = 0.0f;
+    public float skillCoolTime = 2.0f;
+    public float skillRecevery = 3.0f;
+    public float curHitCnt = 0.0f;
     public int maxDashCnt = 2;
     public int curDashCnt = 0;
     public int maxSkillCnt = 1;
     public int curSkillCnt = 0;
     public int maxLifeCnt = 1; 
     public int curLifeCnt = 0;
-
-
-    float attackDelay = 0.0f;
-    float sAttackDelay = 0.0f;
-    float sAttackCoolTime = 2.0f;
-    float skillDelay = 0.0f;
-    float skillCoolTime = 2.0f;
-    float skillRecevery = 3.0f;
-    float curHitCnt = 0.0f;
-    int currentAttack = 0;
+    public int currentAttack = 0;
 
     bool isDash = false;
     bool isHit = false;
@@ -65,11 +64,13 @@ public class PlayerCtrl : MonoBehaviour
     private void Awake()
     {
         weaponMgr = GameObject.Find("WeaponMgr")?.GetComponent<WeaponManager>();
+        weapon = GetComponentInChildren<IWeapon>();
     }
 
 
     void Start()
     {
+        //curWeapon = weaponMgr.myWeapon;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
 
@@ -130,7 +131,7 @@ public class PlayerCtrl : MonoBehaviour
 
                 break;
             case PLAYERSTATE.ATTACK:
-                
+
 
                 break;
             case PLAYERSTATE.SATTACK:
@@ -166,22 +167,26 @@ public class PlayerCtrl : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !isHit && attackDelay >= 0.3f)
         {
-            playerState = PLAYERSTATE.ATTACK;            
-            StartCoroutine(AttackOn());
-            StartCoroutine(Combo());
+            playerState = PLAYERSTATE.ATTACK;
+            LookMousePointer();
+            StartCoroutine(weapon.Attack());
+            //StartCoroutine(AttackOn());            
             StartCoroutine(EffectOnOff());
         }
             
         if (Input.GetMouseButtonDown(1) && !isHit)
         {
             playerState = PLAYERSTATE.SATTACK;
-            StartCoroutine(SAttack());
+            LookMousePointer();
+            StartCoroutine(weapon.SAttack());
         }
 
         if (Input.GetKeyDown(KeyCode.Q) && !isHit && curSkillCnt > 0)
         {
             playerState = PLAYERSTATE.SKILL;
-            StartCoroutine(Skill());
+            LookMousePointer();
+            curSkillCnt--;
+            StartCoroutine(weapon.Skill());
         }
             
         
@@ -211,6 +216,22 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+    public void LookMousePointer()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector3 targetPosition = hit.point;
+            targetPosition.y = transform.position.y;
+
+            Vector3 direction = targetPosition - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotSpeed * Time.deltaTime);
+        }
+    }
+
     IEnumerator Dash()
     {
         curDashCnt++;
@@ -224,90 +245,30 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    IEnumerator Combo()
-    {
-        if (attackDelay > 0.25f)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+    //IEnumerator SAttack()
+    //{
+    //    if (sAttackDelay >= sAttackCoolTime)
+    //    {
+    //        Debug.Log("SAttack!!!");
+    //        anim.SetTrigger("SAttack");
+    //        sAttackDelay = 0.0f;
+    //        yield return new WaitForSeconds(1.0f);
+    //        playerState = PLAYERSTATE.IDLE;
+    //    }
+    //}
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                Vector3 targetPosition = hit.point;
-                targetPosition.y = transform.position.y;
-
-                Vector3 direction = targetPosition - transform.position;
-                Quaternion rotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotSpeed * Time.deltaTime);
-            }
-
-            currentAttack++;
-
-            if (currentAttack > 3)
-                currentAttack = 1;
-
-            if (attackDelay > 0.5f)
-                currentAttack = 1;
-
-            //anim.SetTrigger("Attack1");
-            anim.SetTrigger("Attack" + currentAttack);
-            Debug.Log("Attack" + currentAttack);
-
-            attackDelay = 0.0f;
-            yield return new WaitForSeconds(0.3f);
-            playerState = PLAYERSTATE.IDLE;
-        }
-    }
-
-    IEnumerator SAttack()
-    {
-        if (sAttackDelay >= sAttackCoolTime )
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                Vector3 targetPosition = hit.point;
-                targetPosition.y = transform.position.y;
-
-                Vector3 direction = targetPosition - transform.position;
-                Quaternion rotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotSpeed * Time.deltaTime);
-            }
-            Debug.Log("SAttack!!!");
-            anim.SetTrigger("SAttack");
-            sAttackDelay = 0.0f;
-            yield return new WaitForSeconds(1.0f);
-            playerState = PLAYERSTATE.IDLE;
-        }
-    }
-
-    IEnumerator Skill()
-    {
-        if (skillDelay >= skillCoolTime)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                Vector3 targetPosition = hit.point;
-                targetPosition.y = transform.position.y;
-
-                Vector3 direction = targetPosition - transform.position;
-                Quaternion rotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotSpeed * Time.deltaTime);
-            }
-
-            curSkillCnt--;
-            UIManager.Instance.UpdateSkill();
-            Debug.Log("Fire Ball!!!");
-            anim.SetTrigger("Skill");
-            yield return new WaitForSeconds(1.0f);
-            playerState = PLAYERSTATE.IDLE;
-        }        
-    }
+    //IEnumerator Skill()
+    //{
+    //    if (skillDelay >= skillCoolTime)
+    //    {
+    //        curSkillCnt--;
+    //        UIManager.Instance.UpdateSkill();
+    //        Debug.Log("Fire Ball!!!");
+    //        anim.SetTrigger("Skill");
+    //        yield return new WaitForSeconds(1.0f);
+    //        playerState = PLAYERSTATE.IDLE;
+    //    }        
+    //}
 
     IEnumerator EffectOnOff()
     {
@@ -380,10 +341,10 @@ public class PlayerCtrl : MonoBehaviour
         Debug.Log("Player Die... 마을로 돌아갑니다.");
     }
 
-    IEnumerator AttackOn()
+    public void AttackOn()
     {
         attackRange.SetActive(true);
-        yield return new WaitForSeconds(0.4f);
-        attackRange.SetActive(false);
+        //yield return new WaitForSeconds(0.4f);
+        //attackRange.SetActive(false);
     }
 }

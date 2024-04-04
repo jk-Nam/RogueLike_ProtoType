@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
@@ -30,10 +31,18 @@ public class Shop : MonoBehaviour
             list[i] = temp;
 
             selectedItems.Add(list[i]);
-            GameObject saleItem = Instantiate(list[i], sales[i].transform.position, Quaternion.identity, sales[i].transform);
-            saleItem.transform.position += new Vector3(0, 0.45f, 0);
-            saleItem.transform.rotation = Quaternion.Euler(45.0f, 0, -45.0f);
-            saleItem.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            GameObject saleItem = Instantiate(list[i], sales[i].transform.position, Quaternion.identity, sales[i].transform);            
+            if (saleItem.CompareTag("Book"))
+            {
+                saleItem.transform.position += new Vector3(0, 0.45f, 0);
+                saleItem.transform.rotation = Quaternion.Euler(45.0f, 0, -45.0f);
+                saleItem.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+            else if (saleItem.CompareTag("Food"))
+            {
+
+            }
+            
         }
     }
    

@@ -21,6 +21,7 @@ public class Book : Item
 
     public BooksType booksType;
     public Canvas priceUI;
+    public Text priceTxt;
 
     public int price;
 
@@ -30,6 +31,7 @@ public class Book : Item
     private void Start()
     {
         itemSprite = GetComponent<Sprite>();
+        priceTxt.text = price.ToString();
     }
 
     private void Update()

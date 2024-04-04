@@ -6,13 +6,13 @@ public interface IWeapon
 {
 
 
-    void Attack();
+    public IEnumerator Attack();
 
 
-    void SAttack();
+    public IEnumerator SAttack();
 
 
-    void Skill();
+    public IEnumerator Skill();
 
 
     void Upgrade();

@@ -11125,6 +11125,7 @@ MonoBehaviour:
   - {fileID: 8203980902004993215, guid: 70166735a0b3dc44c97af96ebc541b20, type: 3}
   - {fileID: 8203980902004993215, guid: 288971bb17bed70429cf0b76b0239862, type: 3}
   - {fileID: 8203980902004993215, guid: baaf4532b6829df4fbd650b6c495d7c4, type: 3}
+  - {fileID: 1746611198839318156, guid: b18dc4cd6378bd34b8b4e34e04b8f60a, type: 3}
   rewardImage:
   - {fileID: 1236478135}
   - {fileID: 1428861019}
@@ -22589,6 +22590,7 @@ MonoBehaviour:
   pressES: {fileID: 0}
   pressEStage: {fileID: 59422065}
   rewardUI: {fileID: 0}
+  weaponUpgradeUI: {fileID: 0}
   curHp: {fileID: 1971113160}
   maxHp: {fileID: 2051270680}
   curSkill: {fileID: 1120031323}

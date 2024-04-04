@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour, IWeapon
 {
+    PlayerCtrl playerCtrl;
+    public Animator anim;
+
     public float dmg = 20.0f;
     public float attackSpeed = 4.0f;
     public float range = 8.0f;
@@ -11,19 +14,25 @@ public class Bow : MonoBehaviour, IWeapon
     public int upgrade = 0;
     public int needSteel = 1;
 
-    public void Attack()
+    private void Awake()
     {
-        
+        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
+        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
-    public void SAttack()
+    public IEnumerator Attack()
     {
-        
+        yield return null;
     }
 
-    public void Skill()
+    public IEnumerator SAttack()
     {
-        
+        yield return null;
+    }
+
+    public IEnumerator Skill()
+    {
+        yield return null;
     }
 
     public void Upgrade()

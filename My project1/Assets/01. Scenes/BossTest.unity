@@ -296,7 +296,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab4269e12763c2845868256b389e5b9b, type: 2}
+  - {fileID: 2100000, guid: d65474bcfca68fb4ca04c0ed2506644d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -502,7 +502,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2318270598649040505, guid: 2982737fa5943214b86d557ae3afaf54, type: 3}
       propertyPath: m_Name
-      value: Boss
+      value: Boss1
       objectReference: {fileID: 0}
     - target: {fileID: 9191684872491792176, guid: 2982737fa5943214b86d557ae3afaf54, type: 3}
       propertyPath: m_LocalPosition.x
