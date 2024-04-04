@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Book : Item
 {
@@ -19,12 +20,29 @@ public class Book : Item
     }
 
     public BooksType booksType;
+    public Canvas priceUI;
+
+    public int price;
+
+    bool isContact;
 
 
     private void Start()
     {
         itemSprite = GetComponent<Sprite>();
     }
+
+    private void Update()
+    {
+        if (isContact && GameManager.Instance.playerCoin >= price && Input.GetKeyUp(KeyCode.E))
+        {
+            GameManager.Instance.playerCoin -= price;
+            UseItem();
+            Destroy(gameObject);
+        }
+    }
+
+    
 
     public override void UseItem()
     {
@@ -66,9 +84,16 @@ public class Book : Item
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {            
-            Destroy(gameObject);
-            UseItem();
-        }       
+        {
+            isContact = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isContact = false;
+        }
     }
 }
