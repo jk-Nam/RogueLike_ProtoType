@@ -169,8 +169,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             playerState = PLAYERSTATE.ATTACK;
             LookMousePointer();
-            StartCoroutine(weapon.Attack());
-            //StartCoroutine(AttackOn());            
+            StartCoroutine(weapon.Attack());          
             //StartCoroutine(EffectOnOff());
         }
             
@@ -339,10 +338,14 @@ public class PlayerCtrl : MonoBehaviour
         Debug.Log("Player Die... 마을로 돌아갑니다.");
     }
 
-    public void HitCheck()
+    public void HitCheckOn()
     {
         attackRange.SetActive(true);
-        //yield return new WaitForSeconds(0.4f);
-        //attackRange.SetActive(false);
     }
+
+    public void HitCheckOff()
+    {
+        attackRange.SetActive(false);
+    }
+
 }

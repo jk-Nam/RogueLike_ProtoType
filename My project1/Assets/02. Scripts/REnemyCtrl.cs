@@ -20,7 +20,7 @@ public class REnemyCtrl : MonoBehaviour
     PlayerCtrl playerCtrl;
     SpawnEnemy spawnEnemy;
 
-    public float minDistance = 10.0f;
+    public float minDistance = 5.0f;
     public float attackDistance = 10.0f;
     public float maxMoveDistance = 15.0f;
 
@@ -32,7 +32,6 @@ public class REnemyCtrl : MonoBehaviour
 
     Transform enemyTr;
     Transform playerTr;
-    Vector3 targetTr;
 
     NavMeshAgent agent;
     Animator anim;
@@ -101,19 +100,19 @@ public class REnemyCtrl : MonoBehaviour
                     anim.SetBool(hashMove, false);
                     break;
                 case ENEMYSTATE.MOVE:
+                    agent.isStopped = false;
+                    anim.SetBool(hashMove, true);
+                    anim.SetBool(hashAttack, false);
                     Vector3 dir = (playerTr.position - enemyTr.position).normalized;
                     Vector3 movePos = enemyTr.position - dir * Random.Range(5.0f ,maxMoveDistance);
                     agent.SetDestination(movePos);
                     
-                    anim.SetBool(hashMove, true);
-                    anim.SetBool(hashAttack, false);
-                    agent.isStopped = false;
                     break;
                 case ENEMYSTATE.ATTACK:
                     Vector3 direction = playerTr.position - transform.position;
                     direction.y = 0f;
                     Quaternion targetRotation = Quaternion.LookRotation(direction);
-                    targetRotation *= Quaternion.Euler(0, 90, 0);
+                    //targetRotation *= Quaternion.Euler(0, 90, 0);
                     transform.rotation = targetRotation;
                     anim.SetBool(hashAttack, true);
                     break;

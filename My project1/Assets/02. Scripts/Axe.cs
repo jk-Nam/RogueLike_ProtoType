@@ -23,23 +23,25 @@ public class Axe : MonoBehaviour, IWeapon
 
     public IEnumerator Attack()
     {
-        if (playerCtrl.attackDelay > 0.4f)
+        playerCtrl.currentAttack++;
+        AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
+
+        if (playerCtrl.currentAttack > maxCombo)
         {
-            playerCtrl.currentAttack++;
-
-            if (playerCtrl.currentAttack > maxCombo)
-                playerCtrl.currentAttack = 1;
-
-            if (playerCtrl.attackDelay > 1.0f)
-                playerCtrl.currentAttack = 1;
-
-            anim.SetTrigger("Attack" + playerCtrl.currentAttack);
-            Debug.Log("Attack" + playerCtrl.currentAttack);
-
-            playerCtrl.attackDelay = 0.0f;
-            yield return new WaitForSeconds(0.3f);
-            playerCtrl.playerState = PLAYERSTATE.IDLE;
+            playerCtrl.currentAttack = 1;
         }
+
+        if (playerCtrl.attackDelay > 1.0f)
+        {
+            playerCtrl.currentAttack = 1;
+        }
+
+        anim.SetTrigger("Attack" + playerCtrl.currentAttack);
+        Debug.Log("Attack" + playerCtrl.currentAttack);
+
+        playerCtrl.attackDelay = 0.0f;
+        yield return new WaitForSeconds(clipInfo[0].clip.length);
+        playerCtrl.playerState = PLAYERSTATE.IDLE;
     }
 
     public IEnumerator SAttack()

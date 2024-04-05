@@ -1063,11 +1063,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4277312933740748, guid: dd1d58e876624694ca5218d238b685f3, type: 3}
   m_PrefabInstance: {fileID: 82727320}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &84372077 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7694588001980590600, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
-  m_PrefabInstance: {fileID: 1366725659}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &94527424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5433,9 +5428,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myWeapon: {fileID: 0}
-  swordPos: {fileID: 810999853}
-  axePos: {fileID: 84372077}
-  bowPos: {fileID: 1366725661}
+  swordPos: {fileID: 0}
+  axePos: {fileID: 0}
+  bowPos: {fileID: 0}
   sword: {fileID: 8648509376489127191, guid: 343bbb79ea2266249b2848263419b3ae, type: 3}
   axe: {fileID: 4298581473014507375, guid: 94648bb4c2a2025439f07a8794276dbc, type: 3}
   bow: {fileID: 5828559671238678596, guid: 174bb2020a2b3964b93bb457469c4b95, type: 3}
@@ -11080,11 +11075,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &810999853 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3042870510751564445, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
-  m_PrefabInstance: {fileID: 1366725659}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &815035835
 GameObject:
   m_ObjectHideFlags: 0
@@ -17757,8 +17747,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c8a6542af80214f89f3f45a49df32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mEnemy: {fileID: 5851688294336630801, guid: 12ad1fda5d652e24facbbd290941deed, type: 3}
-  rEnemy: {fileID: 6259363720454742888, guid: 6d15bea0c1f620f4596bd2969252e16a, type: 3}
+  mEnemy: {fileID: 1385986406381220670, guid: 45948e14272d6c346adb366171e38595, type: 3}
+  rEnemy: {fileID: 4961361184009909391, guid: 800c166a1b7900f4e8b22d0c95cda745, type: 3}
   points: []
   usedPoints: []
   curMonsterCnt: 0
@@ -19183,7 +19173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816336477345940637, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19193,11 +19183,6 @@ PrefabInstance:
 --- !u!4 &1366725660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5745960193130037772, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
-  m_PrefabInstance: {fileID: 1366725659}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1366725661 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 736493403617038494, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
   m_PrefabInstance: {fileID: 1366725659}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1370080690

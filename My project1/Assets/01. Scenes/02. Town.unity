@@ -964,9 +964,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4277312933740748, guid: dd1d58e876624694ca5218d238b685f3, type: 3}
   m_PrefabInstance: {fileID: 82727320}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &84372077 stripped
+--- !u!1 &91944025 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7694588001980590600, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5036530125793458324, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
   m_PrefabInstance: {fileID: 1366725659}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &95384473
@@ -4947,9 +4947,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myWeapon: {fileID: 0}
-  swordPos: {fileID: 810999853}
-  axePos: {fileID: 84372077}
-  bowPos: {fileID: 1366725661}
+  swordPos: {fileID: 1711579926}
+  axePos: {fileID: 91944025}
+  bowPos: {fileID: 2113439026}
   sword: {fileID: 8648509376489127191, guid: 343bbb79ea2266249b2848263419b3ae, type: 3}
   axe: {fileID: 4298581473014507375, guid: 94648bb4c2a2025439f07a8794276dbc, type: 3}
   bow: {fileID: 5828559671238678596, guid: 174bb2020a2b3964b93bb457469c4b95, type: 3}
@@ -8690,11 +8690,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807287961}
   m_CullTransparentMesh: 1
---- !u!1 &810999853 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3042870510751564445, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
-  m_PrefabInstance: {fileID: 1366725659}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &829350801
 GameObject:
   m_ObjectHideFlags: 0
@@ -9281,17 +9276,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4277312933740748, guid: dd1d58e876624694ca5218d238b685f3, type: 3}
   m_PrefabInstance: {fileID: 875882104}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &879125890 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2827954128626022917, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
-  m_PrefabInstance: {fileID: 1366725659}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f87b198482f4674aacd0c2517bc8cea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &881291086
 GameObject:
   m_ObjectHideFlags: 0
@@ -12699,17 +12683,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4277312933740748, guid: dd1d58e876624694ca5218d238b685f3, type: 3}
   m_PrefabInstance: {fileID: 1130902406}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1131122654 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7774024636155156912, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
-  m_PrefabInstance: {fileID: 1366725659}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bee21940d21a00d47a4dc272ac0e61c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1135532823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15290,18 +15263,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1533358461753218813, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
 --- !u!4 &1366725660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5745960193130037772, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
-  m_PrefabInstance: {fileID: 1366725659}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1366725661 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 736493403617038494, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
   m_PrefabInstance: {fileID: 1366725659}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1407783109
@@ -18558,6 +18527,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708045745}
   m_CullTransparentMesh: 1
+--- !u!1 &1711579926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5116355566883451351, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
+  m_PrefabInstance: {fileID: 1366725659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1724877995
 GameObject:
   m_ObjectHideFlags: 0
@@ -21458,17 +21432,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4905138063918426, guid: dc8c6d93624e89b4e924a58fc5d4f1fb, type: 3}
   m_PrefabInstance: {fileID: 1975498059}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1985482832 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3459401068505320892, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
-  m_PrefabInstance: {fileID: 1366725659}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09f3edef6a0067d4199a2a2617807b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1988798061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23257,6 +23220,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111792405}
   m_CullTransparentMesh: 1
+--- !u!1 &2113439026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8812788055179967374, guid: 8d54686ac7ce9554f8716e8a00ac8269, type: 3}
+  m_PrefabInstance: {fileID: 1366725659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2127274992
 GameObject:
   m_ObjectHideFlags: 0
@@ -23413,15 +23381,15 @@ PrefabInstance:
     - target: {fileID: 7228102865235315512, guid: 7c6ebba92f18ec643af6f8b8fa01367e, type: 3}
       propertyPath: axe
       value: 
-      objectReference: {fileID: 879125890}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228102865235315512, guid: 7c6ebba92f18ec643af6f8b8fa01367e, type: 3}
       propertyPath: bow
       value: 
-      objectReference: {fileID: 1131122654}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228102865235315512, guid: 7c6ebba92f18ec643af6f8b8fa01367e, type: 3}
       propertyPath: sword
       value: 
-      objectReference: {fileID: 1985482832}
+      objectReference: {fileID: 0}
     - target: {fileID: 7228102865235315512, guid: 7c6ebba92f18ec643af6f8b8fa01367e, type: 3}
       propertyPath: wUSwitch
       value: 
