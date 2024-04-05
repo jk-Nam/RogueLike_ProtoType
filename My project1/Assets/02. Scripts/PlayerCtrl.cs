@@ -165,13 +165,13 @@ public class PlayerCtrl : MonoBehaviour
                 break;
         }
 
-        if (Input.GetMouseButtonDown(0) && !isHit && attackDelay >= 0.3f)
+        if (Input.GetMouseButtonDown(0) && !isHit)
         {
             playerState = PLAYERSTATE.ATTACK;
             LookMousePointer();
             StartCoroutine(weapon.Attack());
             //StartCoroutine(AttackOn());            
-            StartCoroutine(EffectOnOff());
+            //StartCoroutine(EffectOnOff());
         }
             
         if (Input.GetMouseButtonDown(1) && !isHit)
@@ -187,9 +187,7 @@ public class PlayerCtrl : MonoBehaviour
             LookMousePointer();
             curSkillCnt--;
             StartCoroutine(weapon.Skill());
-        }
-            
-        
+        }                   
     }
 
     private void Move()
@@ -341,7 +339,7 @@ public class PlayerCtrl : MonoBehaviour
         Debug.Log("Player Die... 마을로 돌아갑니다.");
     }
 
-    public void AttackOn()
+    public void HitCheck()
     {
         attackRange.SetActive(true);
         //yield return new WaitForSeconds(0.4f);

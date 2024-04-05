@@ -17,10 +17,6 @@ public class Sword : MonoBehaviour, IWeapon
     public int upgrade = 0;
     public int needSteel = 1;
 
-    public AnimationClip attack1AnimationClip;
-    public AnimationClip attack2AnimationClip;
-    public AnimationClip attack3AnimationClip;
-
     private void Awake()
     {
         playerCtrl = GetComponentInParent<PlayerCtrl>();
@@ -28,24 +24,27 @@ public class Sword : MonoBehaviour, IWeapon
     }
 
     public IEnumerator Attack()
-    {       
-        if (playerCtrl.attackDelay > 0.25f)
-        {            
-            playerCtrl.currentAttack++;
+    {
+        playerCtrl.currentAttack++;
+        AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
 
-            if (playerCtrl.currentAttack > maxCombo)
-                playerCtrl.currentAttack = 1;
-
-            if (playerCtrl.attackDelay > 0.5f)
-                playerCtrl.currentAttack = 1;
-
-            anim.SetTrigger("Attack" + playerCtrl.currentAttack);
-            Debug.Log("Attack" + playerCtrl.currentAttack);
-
-            playerCtrl.attackDelay = 0.0f;
-            yield return new WaitForSeconds(0.3f);
-            playerCtrl.playerState = PLAYERSTATE.IDLE;
+        if (playerCtrl.currentAttack > maxCombo)
+        {
+            playerCtrl.currentAttack = 1;
         }
+
+        if (playerCtrl.attackDelay > 1.0f)
+        {
+            playerCtrl.currentAttack = 1;
+        }
+
+        anim.SetTrigger("Attack" + playerCtrl.currentAttack);
+        Debug.Log("Attack" + playerCtrl.currentAttack);
+
+        playerCtrl.attackDelay = 0.0f;
+        //yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(clipInfo[0].clip.length);
+        playerCtrl.playerState = PLAYERSTATE.IDLE;
     }
 
     public IEnumerator SAttack()
@@ -67,7 +66,7 @@ public class Sword : MonoBehaviour, IWeapon
             UIManager.Instance.UpdateSkill();
             //Debug.Log("Fire Ball!!!");
             anim.SetTrigger("Skill");
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(2.0f);
             playerCtrl.playerState = PLAYERSTATE.IDLE;
         }
     }

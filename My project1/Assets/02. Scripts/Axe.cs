@@ -23,14 +23,14 @@ public class Axe : MonoBehaviour, IWeapon
 
     public IEnumerator Attack()
     {
-        if (playerCtrl.attackDelay > 0.25f)
+        if (playerCtrl.attackDelay > 0.4f)
         {
             playerCtrl.currentAttack++;
 
             if (playerCtrl.currentAttack > maxCombo)
                 playerCtrl.currentAttack = 1;
 
-            if (playerCtrl.attackDelay > 0.5f)
+            if (playerCtrl.attackDelay > 1.0f)
                 playerCtrl.currentAttack = 1;
 
             anim.SetTrigger("Attack" + playerCtrl.currentAttack);
