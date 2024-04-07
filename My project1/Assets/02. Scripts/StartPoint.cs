@@ -18,7 +18,7 @@ public class StartPoint : MonoBehaviour
     {
         if (isContact && Input.GetKeyUp(KeyCode.E))
         {
-            SceneManager.LoadScene("03. Stage1");
+            SceneManager.LoadScene("Stage1");
         }
 
     }
