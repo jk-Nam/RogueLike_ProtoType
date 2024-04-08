@@ -21,7 +21,7 @@ public class Boss3Ctrl : MonoBehaviour
 
     public GameObject reward;
     public GameObject attackProjectile;
-    public GameObject skill2Projectile;
+    public GameObject skill2HitCheck;
     public Transform skillPos;
 
     public float hp = 1200.0f;
@@ -40,8 +40,6 @@ public class Boss3Ctrl : MonoBehaviour
     public float dwtime = 0;
     public float dwtime1 = 0;
     public float dwtime2 = 0;
-
-    Vector3 vel = Vector3.zero;
 
     [SerializeField] bool isDie = false;
     [SerializeField] bool isAttack = false;
@@ -142,9 +140,9 @@ public class Boss3Ctrl : MonoBehaviour
                     {
                         transform.LookAt(playerTr.position);
                         bossAnim.SetTrigger("Skill2");
-                        GameObject projectile = Instantiate(skill2Projectile, transform.position, Quaternion.identity);
-                        projectile.transform.LookAt(playerTr.position);
-                        projectile.transform.rotation = Quaternion.Euler(0, 0, 90.0f);
+                        skill2HitCheck.SetActive(true);
+                        yield return new WaitForSeconds(1.0f);
+                        skill2HitCheck.SetActive(false);
                         isSkill2 = false;
                         yield return new WaitForSeconds(2.0f);
                         bossState = BOSSSTATE.IDLE;

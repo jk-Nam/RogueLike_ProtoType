@@ -60,7 +60,7 @@ public class WeaponStand : MonoBehaviour
             sword.Upgrade();
             
             needSteel1.text = sword.needSteel.ToString();
-            if (sword.upgrade >= 5)
+            if (sword.curUpgrade >= 5)
                 //버튼 클릭 불가
                 swordUpgradeBtn.interactable = false;
         }

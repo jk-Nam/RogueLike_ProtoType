@@ -14,7 +14,7 @@ public class Sword : MonoBehaviour, IWeapon
     public float attackSpeed = 0.25f;
     public float range = 1.0f;
     public int maxCombo = 3;
-    public int upgrade = 0;
+    public int curUpgrade = 0;
     public int needSteel = 1;
 
     private void Awake()
@@ -73,8 +73,9 @@ public class Sword : MonoBehaviour, IWeapon
 
     public void Upgrade()
     {
-            upgrade++;
-            GameManager.Instance.playerSteel -= needSteel;
-            needSteel++;          
+        curUpgrade++;
+        GameManager.Instance.playerSteel -= needSteel;
+        needSteel++;
+
     }
 }

@@ -48,11 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f3edef6a0067d4199a2a2617807b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  playerState: 0
   dmg: 10
   attackSpeed: 1
   range: 1
   maxCombo: 3
   upgrade: 0
+  needSteel: 1
 --- !u!33 &5646619283234562763
 MeshFilter:
   m_ObjectHideFlags: 0
