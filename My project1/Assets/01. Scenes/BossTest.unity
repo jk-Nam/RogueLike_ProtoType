@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: ed1ddb1908dd1b34f97083a3177b6d77, type: 2}
 --- !u!1 &727666355
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &934979111
 MeshCollider:
@@ -504,10 +504,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss2
       objectReference: {fileID: 0}
-    - target: {fileID: 3217012131022365570, guid: 6fe811d13797d9547b7de724419eb3aa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5234795140987897898, guid: 6fe811d13797d9547b7de724419eb3aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -564,6 +560,10 @@ PrefabInstance:
     - target: {fileID: 1199594903418277301, guid: 2099125810a30bf46989e4879eb02a25, type: 3}
       propertyPath: m_Name
       value: Boss3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199594903418277301, guid: 2099125810a30bf46989e4879eb02a25, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1530425331467727754, guid: 2099125810a30bf46989e4879eb02a25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -626,14 +626,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3270762520924198555, guid: 2982737fa5943214b86d557ae3afaf54, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6278844268670401951, guid: 2982737fa5943214b86d557ae3afaf54, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9191684872491792176, guid: 2982737fa5943214b86d557ae3afaf54, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -675,8 +667,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1211362947735280916, guid: 2982737fa5943214b86d557ae3afaf54, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2982737fa5943214b86d557ae3afaf54, type: 3}

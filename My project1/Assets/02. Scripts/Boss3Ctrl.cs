@@ -22,6 +22,7 @@ public class Boss3Ctrl : MonoBehaviour
     public GameObject reward;
     public GameObject attackProjectile;
     public GameObject skill2HitCheck;
+    public GameObject skill2Effect;
     public Transform skillPos;
 
     public float hp = 1200.0f;
@@ -140,9 +141,8 @@ public class Boss3Ctrl : MonoBehaviour
                     {
                         transform.LookAt(playerTr.position);
                         bossAnim.SetTrigger("Skill2");
-                        skill2HitCheck.SetActive(true);
-                        yield return new WaitForSeconds(1.0f);
-                        skill2HitCheck.SetActive(false);
+                        yield return new WaitForSeconds(0.3f);
+                        Instantiate(skill2Effect, skill2HitCheck.transform.position, Quaternion.identity);
                         isSkill2 = false;
                         yield return new WaitForSeconds(2.0f);
                         bossState = BOSSSTATE.IDLE;
@@ -203,7 +203,15 @@ public class Boss3Ctrl : MonoBehaviour
         }
     }
 
-    
+    public void Skill2HitOn()
+    {
+        skill2HitCheck.SetActive(true);
+    }
+
+    public void Skill2HitOff()
+    {
+        skill2HitCheck.SetActive(false);
+    }
 
 
     private void OnDrawGizmos()

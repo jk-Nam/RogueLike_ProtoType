@@ -97,6 +97,7 @@ public class REnemyCtrl : MonoBehaviour
             {
                 case ENEMYSTATE.IDLE:
                     agent.isStopped = true;
+                    agent.velocity = Vector3.zero;
                     anim.SetBool(hashMove, false);
                     break;
                 case ENEMYSTATE.MOVE:
@@ -112,7 +113,6 @@ public class REnemyCtrl : MonoBehaviour
                     Vector3 direction = playerTr.position - transform.position;
                     direction.y = 0f;
                     Quaternion targetRotation = Quaternion.LookRotation(direction);
-                    //targetRotation *= Quaternion.Euler(0, 90, 0);
                     transform.rotation = targetRotation;
                     anim.SetBool(hashAttack, true);
                     break;

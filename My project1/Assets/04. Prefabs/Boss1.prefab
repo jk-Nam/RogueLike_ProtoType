@@ -1250,8 +1250,8 @@ MonoBehaviour:
   attackCoolTime: 5
   skillDist1: 2
   skillDist2: 18
-  skill1CoolTime: 10
-  skill2CoolTime: 15
+  skill1CoolTime: 15
+  skill2CoolTime: 20
   dmg: 10
   skill1Dmg: 13
   skill2Dmg: 15
@@ -1264,6 +1264,7 @@ MonoBehaviour:
   isAttack: 0
   isSkill1: 0
   isSkill2: 0
+  isTrace: 0
 --- !u!136 &7057095930950355865
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1279,7 +1280,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

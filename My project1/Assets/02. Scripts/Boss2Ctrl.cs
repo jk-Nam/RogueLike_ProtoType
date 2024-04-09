@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Boss2Ctrl : MonoBehaviour
 {
     public enum BOSSSTATE
     {
         IDLE = 0,
-        ATTACK = 1,
-        SKILL1 = 2,
-        SKILL2 = 3,
-        DIE = 4
+        Trace = 1,
+        ATTACK = 2,
+        SKILL1 = 3,
+        SKILL2 = 4,
+        DIE = 5
     }
 
     public BOSSSTATE bossState;
@@ -18,13 +20,15 @@ public class Boss2Ctrl : MonoBehaviour
     Transform bossTr;
     Transform playerTr;
     Animator bossAnim;
+    NavMeshAgent agent;
 
     public GameObject reward;
-    public GameObject skill2Projectile;
-    public Transform skillPos;
+    public GameObject skill2Effect;
+    public Transform skill1Pos;
+    public Transform skill2Pos;
 
     public float hp = 1200.0f;
-    public float rotSpeed = 10.0f;
+    public float rotSpeed = 500.0f;
     public float attackDist = 3.0f;
     public float attackCoolTime = 3.0f;
     public float skillDist1 = 2.0f;
@@ -56,6 +60,7 @@ public class Boss2Ctrl : MonoBehaviour
         StartCoroutine(CheckBossState());
         StartCoroutine(BossAction());
         bossAnim.SetTrigger("Start");
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -74,6 +79,11 @@ public class Boss2Ctrl : MonoBehaviour
             }
 
             float distance = Vector3.Distance(playerTr.position, bossTr.position);
+
+            if (distance >= skillDist2)
+            {
+                bossState = BOSSSTATE.Trace;
+            }
 
             if (distance <= skillDist2 && isSkill2)
             {
@@ -103,14 +113,19 @@ public class Boss2Ctrl : MonoBehaviour
                 case BOSSSTATE.IDLE:
                     transform.LookAt(playerTr.position);
                     break;
+                case BOSSSTATE.Trace:
+                    agent.SetDestination(playerTr.position);
+                    break;
                 case BOSSSTATE.ATTACK:
                     if (isAttack)
                     {
+                        AnimatorClipInfo[] curClipInfos;
+                        curClipInfos = bossAnim.GetCurrentAnimatorClipInfo(0);
+
                         transform.LookAt(playerTr.position);
                         bossAnim.SetTrigger("Attack");
                         isAttack = false;
-                        yield return new WaitForSeconds(attackCoolTime);
-                        isAttack = true;
+                        yield return new WaitForSeconds(curClipInfos[0].clip.length);
                         bossState = BOSSSTATE.IDLE;
                     }
                     else
@@ -119,11 +134,12 @@ public class Boss2Ctrl : MonoBehaviour
                 case BOSSSTATE.SKILL1:
                     if (isSkill1)
                     {
+                        AnimatorClipInfo[] curClipInfos;
+                        curClipInfos = bossAnim.GetCurrentAnimatorClipInfo(0);
                         transform.LookAt(playerTr.position);
                         bossAnim.SetTrigger("Skill1");
-                        yield return new WaitForSeconds(0.5f);
+                        yield return new WaitForSeconds(curClipInfos[0].clip.length);
                         isSkill1 = false;
-                        yield return new WaitForSeconds(2.0f);
                         bossState = BOSSSTATE.IDLE;
                     }
                     else
@@ -134,11 +150,11 @@ public class Boss2Ctrl : MonoBehaviour
                     {
                         transform.LookAt(playerTr.position);
                         bossAnim.SetTrigger("Skill2");
-                        GameObject projectile = Instantiate(skill2Projectile, transform.position, Quaternion.identity);
-                        projectile.transform.LookAt(playerTr.position);
-                        projectile.transform.rotation = Quaternion.Euler(0, 0, 90.0f);
+                        agent.SetDestination(playerTr.position);
+                        //GameObject effect = Instantiate(skill2Effect, skill2Pos.position, Quaternion.identity);
+                        yield return new WaitForSeconds(5.0f);
                         isSkill2 = false;
-                        yield return new WaitForSeconds(2.0f);
+                        bossAnim.SetTrigger("Skill2End");
                         bossState = BOSSSTATE.IDLE;
                     }
                     else

@@ -99,6 +99,7 @@ public class MEnemyCtrl : MonoBehaviour
             {
                 case ENEMYSTATE.IDLE:
                     agent.isStopped = true;
+                    agent.velocity = Vector3.zero;
                     anim.SetBool(hashTrace, false);
                     break;
                 case ENEMYSTATE.TRACE:
@@ -109,6 +110,7 @@ public class MEnemyCtrl : MonoBehaviour
                     break;
                 case ENEMYSTATE.ATTACK:
                     agent.isStopped = true;
+                    agent.velocity = Vector3.zero;
                     transform.LookAt(playerTr.position);
                     anim.SetBool(hashAttack, true);
                     isAttack = false;
@@ -123,14 +125,15 @@ public class MEnemyCtrl : MonoBehaviour
                     agent.isStopped = false;
                     break;
                 case ENEMYSTATE.DIE:
+                    anim.SetTrigger(hashDie);
+                    StopCoroutine(CheckEnemyState());
                     isDie = true;
                     agent.isStopped = true;
-                    anim.SetTrigger(hashDie);
-                    spawnEnemy.curMonsterCnt--;                    
-                    spawnEnemy.CheckEnemy();
-                    StopAllCoroutines();
-                    GetComponent<CapsuleCollider>().enabled = false;
+                    agent.velocity = Vector3.zero;
                     Destroy(gameObject, 5.0f);
+                    spawnEnemy.curMonsterCnt--;
+                    spawnEnemy.CheckEnemy();
+                    GetComponent<CapsuleCollider>().enabled = false;
                     break;
                 default:
                     break;
@@ -161,7 +164,7 @@ public class MEnemyCtrl : MonoBehaviour
             enemyState = ENEMYSTATE.HIT;
         }
 
-        if (other.CompareTag("AttackRange") && curHp < 0)
+        if (other.CompareTag("AttackRange") && curHp <= 0)
         {
             enemyState = ENEMYSTATE.DIE;
         }

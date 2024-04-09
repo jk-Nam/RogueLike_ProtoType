@@ -49,6 +49,7 @@ public class BossCtrl : MonoBehaviour
     [SerializeField] bool isAttack = false;
     [SerializeField] bool isSkill1 = false;
     [SerializeField] bool isSkill2 = false;
+    [SerializeField] bool isTrace = false;
 
 
     void Start()
@@ -64,8 +65,11 @@ public class BossCtrl : MonoBehaviour
     {
         CheckSkillCoolTime();
 
-        if (isSkill1 && bossState == BOSSSTATE.SKILL1)
+        if (isTrace)
+        {
+            bossAnim.SetBool("IsTrace", true);
             transform.position = Vector3.SmoothDamp(transform.position, playerTr.position, ref vel, 0.5f);
+        }
 
 
     }
@@ -127,9 +131,10 @@ public class BossCtrl : MonoBehaviour
                     if (isSkill1)
                     {
                         transform.LookAt(playerTr.position);
-                        bossAnim.SetTrigger("Skill1");
-                        isSkill1 = false;
-                        yield return new WaitForSeconds(2.0f);
+                        isTrace = true;
+                        //bossAnim.SetTrigger("Skill1");
+                        //isSkill1 = false;
+                        yield return new WaitForSeconds(2.0f);                        
                         bossState = BOSSSTATE.IDLE;
                     }
                     else
@@ -140,7 +145,6 @@ public class BossCtrl : MonoBehaviour
                     {
                         transform.LookAt(playerTr.position);
                         GameObject projectile = Instantiate(Skill2Projectile, skillPos.position, Quaternion.identity);
-                        projectile.transform.LookAt(playerTr.position);
                         bossAnim.SetTrigger("Skill2");
                         isSkill2 = false;
                         yield return new WaitForSeconds(2.0f);
@@ -221,6 +225,20 @@ public class BossCtrl : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackDist);
+        }
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            isTrace = false;
+            bossAnim.SetBool("IsTrace", false);
+            if (bossState == BOSSSTATE.SKILL1)
+            {
+                bossAnim.SetTrigger("Skill1");
+                isSkill1 = false;
+            }
         }
     }
 }

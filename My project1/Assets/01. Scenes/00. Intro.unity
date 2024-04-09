@@ -546,6 +546,89 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &608967902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 608967905}
+  - component: {fileID: 608967904}
+  - component: {fileID: 608967903}
+  m_Layer: 0
+  m_Name: GameMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &608967903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608967902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978f21a1040c4fe4f86d7b65e7a56ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponMgr: {fileID: 1990397192}
+  myWeapon: {fileID: 0}
+  playerCoin: 0
+  playerForce: 100
+  playerSteel: 40
+  upgradeCoin: 2
+  isClear: 0
+  totalClearCnt: 0
+  swordClearCnt: 0
+  axeClearCnt: 0
+  bowClearCnt: 0
+--- !u!114 &608967904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608967902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c0c2d76ef36dc4f937202872323621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  books:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rewardImage: []
+  rewardName: []
+  rewardDes: []
+  selectedReward: []
+--- !u!4 &608967905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608967902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &641972818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1196,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483199052}
   m_CullTransparentMesh: 1
+--- !u!1 &1575847867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1575847869}
+  - component: {fileID: 1575847868}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1575847868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575847867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282f08bbebbe7f4428a7b3f6dbbf60b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInfo: {fileID: 0}
+  weaponStandUI: {fileID: 0}
+  questUI: {fileID: 0}
+  pressEQ: {fileID: 0}
+  upgradeUI: {fileID: 0}
+  pressEU: {fileID: 0}
+  pressES: {fileID: 0}
+  pressEStage: {fileID: 0}
+  rewardUI: {fileID: 0}
+  weaponUpgradeUI: {fileID: 0}
+  curHp: {fileID: 0}
+  maxHp: {fileID: 0}
+  curSkill: {fileID: 0}
+  maxSkill: {fileID: 0}
+  coinCnt: {fileID: 0}
+  forceCnt: {fileID: 0}
+  steelCnt: {fileID: 0}
+  hpBar: {fileID: 0}
+  lifeImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  maxLife: 3
+  curLife: 0
+--- !u!4 &1575847869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575847867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1788976419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,6 +1385,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788976419}
   m_CullTransparentMesh: 1
+--- !u!1 &1990397191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990397193}
+  - component: {fileID: 1990397192}
+  m_Layer: 0
+  m_Name: WeaponMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1990397192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990397191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53c9d670552e0e4bb5bdeb314454950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 0
+  myWeapon: {fileID: 0}
+  swordPos: {fileID: 0}
+  axePos: {fileID: 0}
+  bowPos: {fileID: 0}
+  sword: {fileID: 8648509376489127191, guid: 343bbb79ea2266249b2848263419b3ae, type: 3}
+  axe: {fileID: 4298581473014507375, guid: 94648bb4c2a2025439f07a8794276dbc, type: 3}
+  bow: {fileID: 5828559671238678596, guid: 174bb2020a2b3964b93bb457469c4b95, type: 3}
+--- !u!4 &1990397193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990397191}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2044874636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,3 +1645,6 @@ SceneRoots:
   - {fileID: 588879283}
   - {fileID: 1158813200}
   - {fileID: 641972821}
+  - {fileID: 1575847869}
+  - {fileID: 1990397193}
+  - {fileID: 608967905}

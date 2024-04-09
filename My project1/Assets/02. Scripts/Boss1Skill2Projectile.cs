@@ -10,18 +10,16 @@ public class Boss1Skill2Projectile : MonoBehaviour
     public float moveSpeed = 5.0f;
     public float dmg = 10.0f;
 
-    Vector3 dir;
-
     void Start()
     {        
         playerTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        Invoke("SelfDestroy", 3.0f);
-        dir = (transform.position - playerTr.position).normalized;
+        Invoke("SelfDestroy", 5.0f);
+        transform.LookAt(playerTr.position);
     }
 
     void Update()
     {
-        transform.Translate(dir * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
