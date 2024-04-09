@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class RewardManager : MonoBehaviour
 {
+    PlayerCtrl playerCtrl;
+
     public List<GameObject> books;
     public Image[] rewardImage;
     public Text[] rewardName;
@@ -12,6 +14,10 @@ public class RewardManager : MonoBehaviour
 
     public List<GameObject> selectedReward;
 
+    private void Awake()
+    {
+        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
+    }
 
     private void Start()
     {
@@ -53,6 +59,7 @@ public class RewardManager : MonoBehaviour
         selectedReward[num].GetComponent<Book>().UseItem();
         Debug.Log(num + "번째 아이템 효과가 적용되었습니다.");
         UIManager.Instance.rewardUI.SetActive(false);
+        GameManager.Instance.selectBooks.Add(selectedReward[num]);
     }
 
 }

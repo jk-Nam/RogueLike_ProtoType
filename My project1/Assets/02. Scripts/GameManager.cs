@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using SimpleJSON;
 using System.IO;
+using UnityEngine.UI;
 using static WeaponManager;
+using UnityEditor;
 
 [System.Serializable]
 public class GameManager : MonoBehaviour
@@ -15,6 +17,11 @@ public class GameManager : MonoBehaviour
     
     PlayerCtrl playerCtrl;
     public WeaponManager weaponMgr;
+
+    public List<GameObject> selectBooks;
+    public List<Image> bookImage;
+    public List<Text> bookName;
+    public List<Text> bookDes;
 
     public GameObject myWeapon;
     public int playerCoin;
@@ -107,5 +114,19 @@ public class GameManager : MonoBehaviour
         Debug.Log(playerInfo);
         string path = Application.persistentDataPath + "/Player1Save.json";
         File.WriteAllText(path, playerInfo.ToString());
+    }
+
+    public void ShowResult()
+    {
+        List<GameObject> list = new List<GameObject>(selectBooks);
+
+
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            bookImage[i].sprite = list[i].GetComponent<Book>().itemSprite;
+            bookName[i].text = list[i].GetComponent<Book>().itemName;
+            bookDes[i].text = list[i].GetComponent<Book>().itemDes;
+        }
     }
 }

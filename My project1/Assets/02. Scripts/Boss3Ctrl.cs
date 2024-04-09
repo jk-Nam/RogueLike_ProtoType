@@ -15,6 +15,7 @@ public class Boss3Ctrl : MonoBehaviour
 
     public BOSSSTATE bossState;
 
+    PlayerCtrl playerCtrl;
     Transform bossTr;
     Transform playerTr;
     Animator bossAnim;
@@ -50,6 +51,7 @@ public class Boss3Ctrl : MonoBehaviour
 
     void Start()
     {
+        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
         bossAnim = GetComponent<Animator>();
         bossTr = GetComponent<Transform>();
         playerTr = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -211,6 +213,19 @@ public class Boss3Ctrl : MonoBehaviour
     public void Skill2HitOff()
     {
         skill2HitCheck.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AttackRange") && hp > 0)
+        {
+            hp -= playerCtrl.dmg;
+        }
+
+        if (other.CompareTag("AttackRange") && hp <= 0)
+        {
+            bossState = BOSSSTATE.DIE;
+        }
     }
 
 

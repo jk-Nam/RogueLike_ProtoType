@@ -24,7 +24,7 @@ public class PlayerCtrl : MonoBehaviour
     public GameObject curWeapon;
     public GameObject dashEffect;
     public GameObject attackRange;
-    public GameObject attackEffect;
+    public GameObject attackEffect;    
 
     public Animator anim;
     Rigidbody rb;
@@ -165,7 +165,7 @@ public class PlayerCtrl : MonoBehaviour
                 break;
         }
 
-        if (Input.GetMouseButtonDown(0) && !isHit)
+        if (Input.GetMouseButtonDown(0) && !isHit && attackDelay >= 1.0f)
         {
             playerState = PLAYERSTATE.ATTACK;
             LookMousePointer();

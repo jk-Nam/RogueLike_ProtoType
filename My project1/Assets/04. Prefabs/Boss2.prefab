@@ -607,7 +607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5234795140987897898
 Transform:
   m_ObjectHideFlags: 0
@@ -666,16 +666,16 @@ MonoBehaviour:
   skill2Pos: {fileID: 0}
   hp: 1200
   rotSpeed: 10
-  attackDist: 3
+  attackDist: 5
   attackCoolTime: 3
-  skillDist1: 4
-  skillDist2: 12
-  skill1CoolTime: 8
-  skill2CoolTime: 15
+  skillDist1: 8
+  skillDist2: 20
+  skill1CoolTime: 15
+  skill2CoolTime: 25
   dmg: 10
   skill1Dmg: 13
   skill2Dmg: 15
-  moveSpeed: 0
+  moveSpeed: 5
   dwtime: 0
   dwtime1: 0
   dwtime2: 0

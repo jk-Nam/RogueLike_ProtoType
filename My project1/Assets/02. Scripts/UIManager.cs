@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     public GameObject pressEStage;
     public GameObject rewardUI;
     public GameObject weaponUpgradeUI;
+    public GameObject resultUI;
+
 
 
     public Text curHp;
@@ -29,6 +31,7 @@ public class UIManager : MonoBehaviour
     public Text steelCnt;
     public Slider hpBar;
     public GameObject[] lifeImages;
+    
 
     public int maxLife = 3;
     public int curLife = 0;

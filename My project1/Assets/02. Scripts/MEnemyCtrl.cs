@@ -127,13 +127,13 @@ public class MEnemyCtrl : MonoBehaviour
                 case ENEMYSTATE.DIE:
                     anim.SetTrigger(hashDie);
                     StopCoroutine(CheckEnemyState());
-                    isDie = true;
                     agent.isStopped = true;
                     agent.velocity = Vector3.zero;
                     Destroy(gameObject, 5.0f);
                     spawnEnemy.curMonsterCnt--;
                     spawnEnemy.CheckEnemy();
                     GetComponent<CapsuleCollider>().enabled = false;
+                    isDie = true;
                     break;
                 default:
                     break;

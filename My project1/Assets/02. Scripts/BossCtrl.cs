@@ -17,6 +17,7 @@ public class BossCtrl : MonoBehaviour
 
     public BOSSSTATE bossState;
 
+    PlayerCtrl playerCtrl;
     Transform bossTr;
     Transform playerTr;
     Animator bossAnim;
@@ -54,6 +55,7 @@ public class BossCtrl : MonoBehaviour
 
     void Start()
     {
+        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
         bossAnim = GetComponent<Animator>();
         bossTr = GetComponent<Transform>();
         playerTr = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -225,6 +227,19 @@ public class BossCtrl : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackDist);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AttackRange") && hp > 0)
+        {
+            hp -= playerCtrl.dmg;
+        }
+
+        if (other.CompareTag("AttackRange") && hp <= 0)
+        {
+            bossState = BOSSSTATE.DIE;
         }
     }
 

@@ -17,6 +17,7 @@ public class Boss2Ctrl : MonoBehaviour
 
     public BOSSSTATE bossState;
 
+    PlayerCtrl playerCtrl;
     Transform bossTr;
     Transform playerTr;
     Animator bossAnim;
@@ -54,25 +55,33 @@ public class Boss2Ctrl : MonoBehaviour
 
     void Start()
     {
+        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
         bossAnim = GetComponent<Animator>();
         bossTr = GetComponent<Transform>();
-        playerTr = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        playerTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         StartCoroutine(CheckBossState());
         StartCoroutine(BossAction());
-        bossAnim.SetTrigger("Start");
         agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
         CheckSkillCoolTime();
+
+        if (bossState == BOSSSTATE.SKILL2)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, playerTr.position, Time.deltaTime * moveSpeed);
+        }
     }
 
     IEnumerator CheckBossState()
     {
+        AnimatorClipInfo[] curClipInfos;
+        curClipInfos = bossAnim.GetCurrentAnimatorClipInfo(0);
+
         while (!isDie)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(curClipInfos[0].clip.length);
             if (bossState == BOSSSTATE.DIE)
             {
                 yield break;
@@ -150,7 +159,7 @@ public class Boss2Ctrl : MonoBehaviour
                     {
                         transform.LookAt(playerTr.position);
                         bossAnim.SetTrigger("Skill2");
-                        agent.SetDestination(playerTr.position);
+                        //agent.SetDestination(playerTr.position);
                         //GameObject effect = Instantiate(skill2Effect, skill2Pos.position, Quaternion.identity);
                         yield return new WaitForSeconds(5.0f);
                         isSkill2 = false;
@@ -210,6 +219,19 @@ public class Boss2Ctrl : MonoBehaviour
                     dwtime2 = 0;
                 }
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AttackRange") && hp > 0)
+        {
+            hp -= playerCtrl.dmg;
+        }
+
+        if (other.CompareTag("AttackRange") && hp <= 0)
+        {
+            bossState = BOSSSTATE.DIE;
         }
     }
 

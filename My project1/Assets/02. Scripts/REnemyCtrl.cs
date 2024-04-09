@@ -62,9 +62,12 @@ public class REnemyCtrl : MonoBehaviour
 
     IEnumerator CheckEnemyState()
     {
-        while (!isDie)
+        AnimatorClipInfo[] curClipInfos;
+        curClipInfos = anim.GetCurrentAnimatorClipInfo(0);
+
+        while (!isDie || enemyState != ENEMYSTATE.MOVE )
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(curClipInfos[0].clip.length);
 
             if (enemyState == ENEMYSTATE.DIE)
             {
@@ -85,7 +88,6 @@ public class REnemyCtrl : MonoBehaviour
             {
                 enemyState = ENEMYSTATE.IDLE;
             }
-            yield return new WaitForSeconds(3.0f);
         }
     }
 
@@ -99,15 +101,15 @@ public class REnemyCtrl : MonoBehaviour
                     agent.isStopped = true;
                     agent.velocity = Vector3.zero;
                     anim.SetBool(hashMove, false);
+                    anim.SetBool(hashAttack, false);
                     break;
                 case ENEMYSTATE.MOVE:
+                    Vector3 dir = (playerTr.position - enemyTr.position).normalized;
+                    Vector3 movePos = enemyTr.position - dir * Random.Range(5.0f, maxMoveDistance);
+                    agent.SetDestination(movePos);                    
                     agent.isStopped = false;
                     anim.SetBool(hashMove, true);
                     anim.SetBool(hashAttack, false);
-                    Vector3 dir = (playerTr.position - enemyTr.position).normalized;
-                    Vector3 movePos = enemyTr.position - dir * Random.Range(5.0f ,maxMoveDistance);
-                    agent.SetDestination(movePos);
-                    
                     break;
                 case ENEMYSTATE.ATTACK:
                     Vector3 direction = playerTr.position - transform.position;
@@ -119,16 +121,17 @@ public class REnemyCtrl : MonoBehaviour
                 case ENEMYSTATE.HIT:
                     anim.SetTrigger(hashHit);
                     curHp -= playerCtrl.dmg;
-                    agent.isStopped = false;
                     break;
                 case ENEMYSTATE.DIE:
-                    isDie = true;
-                    agent.isStopped = true;
                     anim.SetTrigger(hashDie);
+                    StopCoroutine(CheckEnemyState());
+                    agent.isStopped = true;
+                    agent.velocity = Vector3.zero;
+                    Destroy(gameObject, 5.0f);
                     spawnEnemy.curMonsterCnt--;
                     spawnEnemy.CheckEnemy();
-                    StopAllCoroutines();
                     GetComponent<CapsuleCollider>().enabled = false;
+                    isDie = true;
                     break;
                 default:
                     break;
