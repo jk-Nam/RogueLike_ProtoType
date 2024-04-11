@@ -115,19 +115,25 @@ public class PlayerCtrl : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space) && curDashCnt < maxDashCnt)
                 {
                     playerState = PLAYERSTATE.DASH;
+                    curDashCnt++;
                 }
                 break;
             case PLAYERSTATE.MOVE:
                 anim.SetBool("IsMove", true);
                 Move();
-                if (Input.GetKeyDown(KeyCode.Space) && curDashCnt < maxDashCnt)
+                if (Input.GetKeyDown(KeyCode.Space) && curDashCnt <= maxDashCnt)
                 {
                     playerState = PLAYERSTATE.DASH;
+                    curDashCnt++;
                 }
                 break;
-            case PLAYERSTATE.DASH:                
-                isDash = true;
+            case PLAYERSTATE.DASH:                                
                 StartCoroutine(Dash());
+                //if (Input.GetKeyDown(KeyCode.Space) && curDashCnt <= maxDashCnt)
+                //{
+                //    curDashCnt++;
+                //    StartCoroutine(Dash());
+                //}
 
                 break;
             case PLAYERSTATE.ATTACK:
@@ -165,7 +171,7 @@ public class PlayerCtrl : MonoBehaviour
                 break;
         }
 
-        if (Input.GetMouseButtonDown(0) && !isHit && attackDelay >= 1.0f)
+        if (Input.GetMouseButtonDown(0) && !isHit && attackDelay >= 0.25f)
         {
             playerState = PLAYERSTATE.ATTACK;
             LookMousePointer();
@@ -199,7 +205,7 @@ public class PlayerCtrl : MonoBehaviour
         Vector3 nextPos = moveDir.normalized * moveSpeed * Time.deltaTime;
         transform.position += nextPos;
 
-        if (h == 0 && v == 0)
+        if (h == 0 && v == 0 && playerState != PLAYERSTATE.ATTACK)
         {
             playerState = PLAYERSTATE.IDLE;
             return;
@@ -209,7 +215,6 @@ public class PlayerCtrl : MonoBehaviour
             Quaternion newRotation = Quaternion.LookRotation(nextPos);
             transform.rotation = Quaternion.Lerp(rb.rotation, newRotation, rotSpeed * Time.deltaTime);
             transform.rotation = newRotation;
-            
         }
     }
 
@@ -231,7 +236,7 @@ public class PlayerCtrl : MonoBehaviour
 
     IEnumerator Dash()
     {
-        curDashCnt++;
+        isDash = true;
         dashEffect.SetActive(isDash);
         transform.position += transform.forward * dashPower;
         yield return new WaitForSeconds(0.2f);
@@ -242,31 +247,6 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    //IEnumerator SAttack()
-    //{
-    //    if (sAttackDelay >= sAttackCoolTime)
-    //    {
-    //        Debug.Log("SAttack!!!");
-    //        anim.SetTrigger("SAttack");
-    //        sAttackDelay = 0.0f;
-    //        yield return new WaitForSeconds(1.0f);
-    //        playerState = PLAYERSTATE.IDLE;
-    //    }
-    //}
-
-    //IEnumerator Skill()
-    //{
-    //    if (skillDelay >= skillCoolTime)
-    //    {
-    //        curSkillCnt--;
-    //        UIManager.Instance.UpdateSkill();
-    //        Debug.Log("Fire Ball!!!");
-    //        anim.SetTrigger("Skill");
-    //        yield return new WaitForSeconds(1.0f);
-    //        playerState = PLAYERSTATE.IDLE;
-    //    }        
-    //}
-
     IEnumerator EffectOnOff()
     {
         attackEffect.SetActive(true);
@@ -276,7 +256,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyWeapon") && curHp >= 0)
+        if (other.CompareTag("EnemyWeapon") && curHp > 0)
         {
             if (other.GetComponent<MEnemyCtrl>().enemyState == MEnemyCtrl.ENEMYSTATE.ATTACK)
             {
@@ -286,7 +266,7 @@ public class PlayerCtrl : MonoBehaviour
             }            
         }
 
-        if (other.CompareTag("BossWeapon") && curHp >= 0)
+        if (other.CompareTag("BossWeapon") && curHp > 0)
         {
             if (other.GetComponentInParent<BossCtrl>().bossState == BossCtrl.BOSSSTATE.ATTACK)
             {
@@ -296,21 +276,27 @@ public class PlayerCtrl : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("BossSkillEffect"))
+        if (other.CompareTag("BossSkillEffect") && curHp > 0)
+        {
+            playerState = PLAYERSTATE.HIT;
+            Debug.Log("Skill Hit");
+            OnDamage(other.GetComponent<Boss1Skill2Projectile>().dmg);
+        }
+        if (other.CompareTag("BossSkillEffect") && curHp <= 0)
         {
             playerState = PLAYERSTATE.HIT;
             Debug.Log("Skill Hit");
             OnDamage(other.GetComponent<Boss1Skill2Projectile>().dmg);
         }
 
-        if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon")) && curHp <= 0 && curLifeCnt > 0)
+        if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon") || other.CompareTag("BossSkillEffect") || other.CompareTag("BambooSpear")) && curHp <= 0 && curLifeCnt > 0)
         {
             Debug.Log("hp가 0보다 낮아졌습니다.");
             Revive();
             UIManager.Instance.UpdateLife();
         }
 
-        if (other.CompareTag("EnemyWeapon") && curHp <= 0 && curLifeCnt <= 0)
+        if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon") || other.CompareTag("BossSkillEffect") || other.CompareTag("BambooSpear")) && curHp <= 0 && curLifeCnt <= 0)
         {
             playerState = PLAYERSTATE.DEATH;
             isDie = true;

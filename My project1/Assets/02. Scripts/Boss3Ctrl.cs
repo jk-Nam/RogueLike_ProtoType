@@ -225,6 +225,7 @@ public class Boss3Ctrl : MonoBehaviour
         if (other.CompareTag("AttackRange") && hp <= 0)
         {
             bossState = BOSSSTATE.DIE;
+            GameManager.Instance.isClear = true;
         }
     }
 

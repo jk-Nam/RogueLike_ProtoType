@@ -33,7 +33,7 @@ public class Sword : MonoBehaviour, IWeapon
             playerCtrl.currentAttack = 1;
         }
 
-        if (playerCtrl.attackDelay > 1.0f)
+        if (playerCtrl.attackDelay > 1.5f)
         {
             playerCtrl.currentAttack = 1;
         }
@@ -42,8 +42,11 @@ public class Sword : MonoBehaviour, IWeapon
         Debug.Log("Attack" + playerCtrl.currentAttack);
 
         playerCtrl.attackDelay = 0.0f;
-        //yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(clipInfo[0].clip.length);
+        //if (playerCtrl.attackDelay >= 1.0f)
+        //{
+        //    playerCtrl.playerState = PLAYERSTATE.IDLE;
+        //}
         playerCtrl.playerState = PLAYERSTATE.IDLE;
     }
 

@@ -17,6 +17,7 @@ TagManager:
   - Undefined
   - Book
   - Food
+  - BambooSpear
   layers:
   - Default
   - TransparentFX

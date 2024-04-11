@@ -20,8 +20,10 @@ public class UIManager : MonoBehaviour
     public GameObject weaponUpgradeUI;
     public GameObject resultUI;
 
-
-
+    public List<GameObject> selectBooks;
+    public List<Image> bookImage;
+    public List<Text> bookName;
+    public List<Text> bookDes;
     public Text curHp;
     public Text maxHp;
     public Text curSkill;
@@ -29,6 +31,13 @@ public class UIManager : MonoBehaviour
     public Text coinCnt;
     public Text forceCnt;
     public Text steelCnt;
+    public Text totClearCnt;
+    public Text swordClearCnt;
+    public Text swordConCnt;
+    public Text spearClearCnt;
+    public Text spearConCnt;
+    public Text bowClearCnt;
+    public Text bowConCnt;
     public Slider hpBar;
     public GameObject[] lifeImages;
     
@@ -116,5 +125,32 @@ public class UIManager : MonoBehaviour
     public void UpdateSteel()
     {
         steelCnt.text = GameManager.Instance.playerSteel.ToString();
+    }
+
+    public void ShowResult()
+    {
+        resultUI.SetActive(true);
+
+        List<GameObject> list = new List<GameObject>(selectBooks);
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            bookImage[i].sprite = list[i].GetComponent<Book>().itemSprite;
+            bookName[i].text = list[i].GetComponent<Book>().itemName;
+            bookDes[i].text = list[i].GetComponent<Book>().itemDes;
+        }
+
+        totClearCnt.text = GameManager.Instance.totalClearCnt.ToString();
+        swordClearCnt.text = GameManager.Instance.swordClearCnt.ToString();
+        //swordConCnt.text = GameManager.Instance.
+        spearClearCnt.text = GameManager.Instance.axeClearCnt.ToString();
+        //spearConCnt.text = GameManager.Instance.
+        bowClearCnt.text = GameManager.Instance.bowClearCnt.ToString();
+        //bowConCnt.text = GameManager.Instance.
+    }
+
+    public void CloseResult()
+    {
+        resultUI.SetActive(false);
     }
 }

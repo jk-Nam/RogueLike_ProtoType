@@ -16,14 +16,12 @@ public class GameManager : MonoBehaviour
     WeaponType weaponType;
     
     PlayerCtrl playerCtrl;
-    public WeaponManager weaponMgr;
-
-    public List<GameObject> selectBooks;
-    public List<Image> bookImage;
-    public List<Text> bookName;
-    public List<Text> bookDes;
+    public WeaponManager weaponMgr;    
 
     public GameObject myWeapon;
+    public Text clearTimeText;
+
+    public float startTime;
     public int playerCoin;
     public int playerForce;
     public int playerSteel;
@@ -62,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+        TimeCheck();
     }
 
     public void PlayerInfoLoad()
@@ -116,17 +114,18 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(path, playerInfo.ToString());
     }
 
-    public void ShowResult()
+    void TimeCheck()
     {
-        List<GameObject> list = new List<GameObject>(selectBooks);
-
-
-
-        for (int i = 0; i < list.Count; i++)
+        if (isClear)
         {
-            bookImage[i].sprite = list[i].GetComponent<Book>().itemSprite;
-            bookName[i].text = list[i].GetComponent<Book>().itemName;
-            bookDes[i].text = list[i].GetComponent<Book>().itemDes;
+            return;
         }
+
+        float clearTime = Time.time - startTime;
+
+        string minutes = ((int)clearTime / 60).ToString("00");
+        string seconds = (clearTime % 60).ToString("00");
+
+        clearTimeText.text = minutes + " : " + seconds;
     }
 }

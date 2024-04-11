@@ -116,8 +116,8 @@ public class MEnemyCtrl : MonoBehaviour
                     isAttack = false;
                     yield return new WaitForSeconds(attackDelay);
                     isAttack = true;
-                    if (!isAttack)
-                        enemyState = ENEMYSTATE.IDLE;
+                    //if (!isAttack)
+                    //    enemyState = ENEMYSTATE.IDLE;
                     break;
                 case ENEMYSTATE.HIT:
                     anim.SetTrigger(hashHit);

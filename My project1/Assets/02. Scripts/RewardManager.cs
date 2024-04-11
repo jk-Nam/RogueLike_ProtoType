@@ -59,7 +59,7 @@ public class RewardManager : MonoBehaviour
         selectedReward[num].GetComponent<Book>().UseItem();
         Debug.Log(num + "번째 아이템 효과가 적용되었습니다.");
         UIManager.Instance.rewardUI.SetActive(false);
-        GameManager.Instance.selectBooks.Add(selectedReward[num]);
+        UIManager.Instance.selectBooks.Add(selectedReward[num]);
     }
 
 }
