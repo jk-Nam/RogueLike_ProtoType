@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class MEnemyCtrl : MonoBehaviour
 {
@@ -19,9 +20,11 @@ public class MEnemyCtrl : MonoBehaviour
     PlayerCtrl playerCtrl;
     SpawnEnemy spawnEnemy;
 
+    public Slider hpBar;
+
     public float traceDist = 20.0f;
     public float attackDist = 2.0f;
-    public float attackDelay = 1.2f;
+    public float attackDelay = 5.0f;
     public float dmg = 5.0f;
     public bool isDie = false;
     public bool isAttack = true;
@@ -59,7 +62,7 @@ public class MEnemyCtrl : MonoBehaviour
 
 
     void Update()
-    {        
+    {
 
     }
 
@@ -67,7 +70,7 @@ public class MEnemyCtrl : MonoBehaviour
     {
         while (!isDie)
         {
-            yield return new WaitForSeconds(1.0f);
+            //yield return new WaitForSeconds(1.0f);
 
             if (enemyState == ENEMYSTATE.DIE)
             {
@@ -76,17 +79,27 @@ public class MEnemyCtrl : MonoBehaviour
 
             float distance = Vector3.Distance(playerTr.position, enemyTr.position);
 
+
             if (distance <= attackDist && isAttack)
             {
                 enemyState = ENEMYSTATE.ATTACK;
+                AnimatorClipInfo[] curClipInfos;
+                curClipInfos = anim.GetCurrentAnimatorClipInfo(0);
+                yield return new WaitForSeconds(curClipInfos[0].clip.length);
             }
-            else if (distance <= traceDist)
+            else if (distance <= traceDist && enemyState != ENEMYSTATE.ATTACK)
             {
                 enemyState = ENEMYSTATE.TRACE;
+                AnimatorClipInfo[] curClipInfos;
+                curClipInfos = anim.GetCurrentAnimatorClipInfo(0);
+                yield return new WaitForSeconds(curClipInfos[0].clip.length);
             }
             else
             {
                 enemyState = ENEMYSTATE.IDLE;
+                AnimatorClipInfo[] curClipInfos;
+                curClipInfos = anim.GetCurrentAnimatorClipInfo(0);
+                yield return new WaitForSeconds(curClipInfos[0].clip.length);
             }
         }
     }
@@ -114,7 +127,7 @@ public class MEnemyCtrl : MonoBehaviour
                     transform.LookAt(playerTr.position);
                     anim.SetBool(hashAttack, true);
                     isAttack = false;
-                    yield return new WaitForSeconds(attackDelay);
+                    yield return new WaitForSeconds(5.0f);
                     isAttack = true;
                     //if (!isAttack)
                     //    enemyState = ENEMYSTATE.IDLE;
@@ -162,11 +175,13 @@ public class MEnemyCtrl : MonoBehaviour
         if (other.CompareTag("AttackRange") && curHp > 0)
         {
             enemyState = ENEMYSTATE.HIT;
+            hpBar.value = curHp / maxHp;
         }
 
         if (other.CompareTag("AttackRange") && curHp <= 0)
         {
             enemyState = ENEMYSTATE.DIE;
+            hpBar.value = 0;
         }
     }
 }

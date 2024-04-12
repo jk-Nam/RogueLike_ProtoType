@@ -63,6 +63,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         weaponMgr = GameObject.Find("WeaponMgr")?.GetComponent<WeaponManager>();
         weapon = GetComponentInChildren<IWeapon>();
     }
@@ -86,23 +87,51 @@ public class PlayerCtrl : MonoBehaviour
 
     void Update()
     {
-        //공격,특수공격  
-        attackDelay += Time.deltaTime;
-        sAttackDelay += Time.deltaTime;
-        skillDelay += Time.deltaTime;
-
-        //스킬 사용 횟수 재생
-        if (curSkillCnt < maxSkillCnt)
+        
+        //if (!UIManager.Instance.isUIOn())
         {
-            
-            dwTime += Time.deltaTime;
-            if (dwTime >= skillRecevery)
+            //공격,특수공격  
+            attackDelay += Time.deltaTime;
+            sAttackDelay += Time.deltaTime;
+            skillDelay += Time.deltaTime;
+
+            //스킬 사용 횟수 재생
+            if (curSkillCnt < maxSkillCnt)
             {
-                curSkillCnt++;
-                UIManager.Instance.UpdateSkill();
-                dwTime = 0;
-                if (curSkillCnt > maxSkillCnt)
-                    curSkillCnt = maxSkillCnt;
+
+                dwTime += Time.deltaTime;
+                if (dwTime >= skillRecevery)
+                {
+                    curSkillCnt++;
+                    UIManager.Instance.UpdateSkill();
+                    dwTime = 0;
+                    if (curSkillCnt > maxSkillCnt)
+                        curSkillCnt = maxSkillCnt;
+                }
+            }
+
+            
+
+            if (Input.GetMouseButtonDown(0) && !isHit && attackDelay >= 0.25f)
+            {
+                playerState = PLAYERSTATE.ATTACK;
+                LookMousePointer();
+                StartCoroutine(weapon.Attack());
+            }
+
+            if (Input.GetMouseButtonDown(1) && !isHit)
+            {
+                playerState = PLAYERSTATE.SATTACK;
+                LookMousePointer();
+                StartCoroutine(weapon.SAttack());
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q) && !isHit && curSkillCnt > 0)
+            {
+                playerState = PLAYERSTATE.SKILL;
+                LookMousePointer();
+                curSkillCnt--;
+                StartCoroutine(weapon.Skill());
             }
         }
 
@@ -127,7 +156,7 @@ public class PlayerCtrl : MonoBehaviour
                     curDashCnt++;
                 }
                 break;
-            case PLAYERSTATE.DASH:                                
+            case PLAYERSTATE.DASH:
                 StartCoroutine(Dash());
                 //if (Input.GetKeyDown(KeyCode.Space) && curDashCnt <= maxDashCnt)
                 //{
@@ -137,8 +166,6 @@ public class PlayerCtrl : MonoBehaviour
 
                 break;
             case PLAYERSTATE.ATTACK:
-
-
                 break;
             case PLAYERSTATE.SATTACK:
 
@@ -170,29 +197,6 @@ public class PlayerCtrl : MonoBehaviour
             default:
                 break;
         }
-
-        if (Input.GetMouseButtonDown(0) && !isHit && attackDelay >= 0.25f)
-        {
-            playerState = PLAYERSTATE.ATTACK;
-            LookMousePointer();
-            StartCoroutine(weapon.Attack());          
-            //StartCoroutine(EffectOnOff());
-        }
-            
-        if (Input.GetMouseButtonDown(1) && !isHit)
-        {
-            playerState = PLAYERSTATE.SATTACK;
-            LookMousePointer();
-            StartCoroutine(weapon.SAttack());
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q) && !isHit && curSkillCnt > 0)
-        {
-            playerState = PLAYERSTATE.SKILL;
-            LookMousePointer();
-            curSkillCnt--;
-            StartCoroutine(weapon.Skill());
-        }                   
     }
 
     private void Move()
@@ -237,7 +241,7 @@ public class PlayerCtrl : MonoBehaviour
     IEnumerator Dash()
     {
         isDash = true;
-        dashEffect.SetActive(isDash);
+        dashEffect.SetActive(isDash);        
         transform.position += transform.forward * dashPower;
         yield return new WaitForSeconds(0.2f);
         isDash = false;
@@ -247,10 +251,13 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    IEnumerator EffectOnOff()
+    public void EffectOn()
     {
-        attackEffect.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
+        attackEffect.SetActive(true);        
+    }
+
+    public void EffectOff()
+    {
         attackEffect.SetActive(false);
     }
 

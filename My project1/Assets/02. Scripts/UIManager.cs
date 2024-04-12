@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance = null;
     PlayerCtrl playerCtrl;
+    public List<GameObject> uiList;
 
     public GameObject playerInfo;
     public GameObject weaponStandUI;
@@ -44,6 +45,18 @@ public class UIManager : MonoBehaviour
 
     public int maxLife = 3;
     public int curLife = 0;
+
+    public bool isUIOn()
+    {
+        foreach (GameObject ui in uiList)
+        {
+            if (ui.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void Awake()
     {

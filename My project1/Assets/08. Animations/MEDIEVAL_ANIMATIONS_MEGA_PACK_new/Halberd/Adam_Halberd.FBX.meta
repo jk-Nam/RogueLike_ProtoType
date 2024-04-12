@@ -3251,7 +3251,7 @@ ModelImporter:
       takeName: Take 001
       internalID: 7400000
       firstFrame: 274
-      lastFrame: 304
+      lastFrame: 308
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -3279,7 +3279,7 @@ ModelImporter:
       name: Attack2
       takeName: Take 001
       internalID: -5169115476037769438
-      firstFrame: 295
+      firstFrame: 308
       lastFrame: 333
       wrapMode: 0
       orientationOffsetY: 0

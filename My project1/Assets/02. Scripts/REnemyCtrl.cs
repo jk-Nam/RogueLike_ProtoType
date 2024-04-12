@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class REnemyCtrl : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class REnemyCtrl : MonoBehaviour
 
     PlayerCtrl playerCtrl;
     SpawnEnemy spawnEnemy;
+
+    public Slider hpBar;
 
     public float minDistance = 5.0f;
     public float attackDistance = 10.0f;
@@ -62,14 +65,12 @@ public class REnemyCtrl : MonoBehaviour
 
     IEnumerator CheckEnemyState()
     {
-        AnimatorClipInfo[] curClipInfos;
-        curClipInfos = anim.GetCurrentAnimatorClipInfo(0);
+        
 
         while (!isDie || enemyState != ENEMYSTATE.MOVE )
         {
-            yield return new WaitForSeconds(2.5f);
+            //yield return new WaitForSeconds(2.5f);
             //yield return new WaitForSeconds(curClipInfos[0].clip.length);
-            //Debug.Log(curClipInfos[0].clip.name);
 
             if (enemyState == ENEMYSTATE.DIE)
             {
@@ -78,17 +79,24 @@ public class REnemyCtrl : MonoBehaviour
 
             float distance = Vector3.Distance(playerTr.position, enemyTr.position);            
 
-            if (distance <= minDistance)
+            if (distance <= minDistance && enemyState != ENEMYSTATE.ATTACK)
             {
                 enemyState = ENEMYSTATE.MOVE;
+                AnimatorClipInfo[] curClipInfos;
+                curClipInfos = anim.GetCurrentAnimatorClipInfo(0);
+                yield return new WaitForSeconds(curClipInfos[0].clip.length);
             }
-            else if (distance <= attackDistance)
+            else if (distance <= attackDistance && enemyState != ENEMYSTATE.MOVE)
             {
                 enemyState = ENEMYSTATE.ATTACK;
+                AnimatorClipInfo[] curClipInfos;
+                curClipInfos = anim.GetCurrentAnimatorClipInfo(0);
+                yield return new WaitForSeconds(curClipInfos[0].clip.length);
             }
             else
             {
                 enemyState = ENEMYSTATE.IDLE;
+                yield return new WaitForSeconds(1.0f);
             }
         }
     }
@@ -162,11 +170,13 @@ public class REnemyCtrl : MonoBehaviour
         if (other.CompareTag("AttackRange") && curHp > 0)
         {
             enemyState = ENEMYSTATE.HIT;
+            hpBar.value = curHp / maxHp;
         }
 
         if (other.CompareTag("AttackRange") && curHp <= 0)
         {
             enemyState = ENEMYSTATE.DIE;
+            hpBar.value = 0;
         }
     }
 }

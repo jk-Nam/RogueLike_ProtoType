@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 3732dd626efcde147a8ef97248a8f800, type: 2}
 --- !u!1 &186586240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,6 +1362,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4961361184009909391, guid: 800c166a1b7900f4e8b22d0c95cda745, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115151431558230767, guid: 800c166a1b7900f4e8b22d0c95cda745, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115151431558230767, guid: 800c166a1b7900f4e8b22d0c95cda745, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1542,6 +1550,14 @@ PrefabInstance:
     - target: {fileID: 4631892338014364175, guid: 45948e14272d6c346adb366171e38595, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672075414945502157, guid: 45948e14272d6c346adb366171e38595, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672075414945502157, guid: 45948e14272d6c346adb366171e38595, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

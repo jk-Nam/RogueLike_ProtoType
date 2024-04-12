@@ -18167,6 +18167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282f08bbebbe7f4428a7b3f6dbbf60b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiList: []
   playerInfo: {fileID: 888179529}
   weaponStandUI: {fileID: 0}
   questUI: {fileID: 0}

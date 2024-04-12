@@ -26,8 +26,7 @@ public class Sword : MonoBehaviour, IWeapon
     public IEnumerator Attack()
     {
         playerCtrl.currentAttack++;
-        AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
-
+        
         if (playerCtrl.currentAttack > maxCombo)
         {
             playerCtrl.currentAttack = 1;
@@ -39,6 +38,7 @@ public class Sword : MonoBehaviour, IWeapon
         }
 
         anim.SetTrigger("Attack" + playerCtrl.currentAttack);
+        AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
         Debug.Log("Attack" + playerCtrl.currentAttack);
 
         playerCtrl.attackDelay = 0.0f;
@@ -57,7 +57,8 @@ public class Sword : MonoBehaviour, IWeapon
             Debug.Log("SAttack!!!");
             anim.SetTrigger("SAttack");
             playerCtrl.sAttackDelay = 0.0f;
-            yield return new WaitForSeconds(1.0f);
+            AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
+            yield return new WaitForSeconds(clipInfo[0].clip.length);
             playerCtrl.playerState = PLAYERSTATE.IDLE;
         }
     }
@@ -67,9 +68,9 @@ public class Sword : MonoBehaviour, IWeapon
         if (playerCtrl.skillDelay >= playerCtrl.skillCoolTime)
         {
             UIManager.Instance.UpdateSkill();
-            //Debug.Log("Fire Ball!!!");
             anim.SetTrigger("Skill");
-            yield return new WaitForSeconds(2.0f);
+            AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
+            yield return new WaitForSeconds(clipInfo[0].clip.length);
             playerCtrl.playerState = PLAYERSTATE.IDLE;
         }
     }

@@ -54,7 +54,7 @@ MonoBehaviour:
   attackSpeed: 1
   range: 1
   maxCombo: 3
-  upgrade: 0
+  curUpgrade: 0
   needSteel: 1
 --- !u!33 &5646619283234562763
 MeshFilter:

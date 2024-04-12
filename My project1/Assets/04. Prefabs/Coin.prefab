@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  itemSprite: {fileID: 21300000, guid: 5384f10d084053542888f75f1624760f, type: 3}
   itemName: "\uC740\uC790"
   itemDes: "\uD654\uD3D0"
   goodsType: 2
