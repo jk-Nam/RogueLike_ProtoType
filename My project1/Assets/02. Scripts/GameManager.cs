@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public int playerSteel;
     public int upgradeCoin;
     public bool isClear = false;
+    public bool isPlay = false;
 
     public int totalClearCnt = 0;
     public int swordClearCnt = 0;

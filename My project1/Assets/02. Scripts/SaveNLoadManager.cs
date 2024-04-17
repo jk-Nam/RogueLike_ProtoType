@@ -36,21 +36,11 @@ public class SaveNLoadManager : MonoBehaviour
     private string player2FileName = "Player2Save.json";
     private string player3FileName = "Player3Save.json";
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     void Start()
     {
+        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
         myWeapon = weaponMgr.myWeapon;
         ShowPlayerInfo();
-    }
-
-
-    void Update()
-    {
-        
     }
 
     public void ShowPlayerInfo()
@@ -126,6 +116,7 @@ public class SaveNLoadManager : MonoBehaviour
         GameManager.Instance.swordClearCnt = playerInfo["SwordClearCnt"];
         GameManager.Instance.axeClearCnt = playerInfo["AxeClearCnt"];
         GameManager.Instance.bowClearCnt = playerInfo["BowClearCnt"];
+        playerCtrl.playerNum = playerNum;
 
         Debug.Log(playerInfo);
 
@@ -166,10 +157,19 @@ public class SaveNLoadManager : MonoBehaviour
 
     public void NewGame()
     {
-        if (File.Exists(GetPlayerFilePath(1)))
+        int playerNum = 1;
+        while (File.Exists(GetPlayerFilePath(playerNum)))
         {
-
+            playerNum++;
+            if (playerNum > 3) 
+            {   
+                playerNum = 1;
+                break;
+            }
         }
+
+        PlayerInfoSave(playerNum);
+        SceneManager.LoadScene("01. Town");
     }
 
     public void DeleteSave(int playerNum)

@@ -434,7 +434,7 @@ MonoBehaviour:
   skill2HitCheck: {fileID: 279710351506096282}
   skill2Effect: {fileID: 3127517531145019361, guid: dc51fdffbda9f27409b2c8414051f3ba, type: 3}
   skillPos: {fileID: 942758540123669322}
-  hp: 2500
+  hp: 500
   rotSpeed: 10
   attackDist: 5
   attackCoolTime: 5

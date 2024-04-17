@@ -20,13 +20,16 @@ public class PlayerCtrl : MonoBehaviour
     public IWeapon weapon;
 
     public WeaponManager weaponMgr;
+    public SaveNLoadManager saveNLoadManager;
 
     public GameObject curWeapon;
     public GameObject dashEffect;
     public GameObject attackRange;
-    public GameObject attackEffect;    
+    public GameObject attackEffect;
+    public GameObject SKillEffect;
 
     public Animator anim;
+    AudioSource sound;
     Rigidbody rb;
 
     public float moveSpeed = 5.0f;
@@ -51,6 +54,7 @@ public class PlayerCtrl : MonoBehaviour
     public int maxLifeCnt = 1; 
     public int curLifeCnt = 0;
     public int currentAttack = 0;
+    public int playerNum = 1;
 
     bool isDash = false;
     bool isHit = false;
@@ -63,9 +67,9 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         weaponMgr = GameObject.Find("WeaponMgr")?.GetComponent<WeaponManager>();
         weapon = GetComponentInChildren<IWeapon>();
+        
     }
 
 
@@ -74,6 +78,7 @@ public class PlayerCtrl : MonoBehaviour
         //curWeapon = weaponMgr.myWeapon;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        sound = GetComponent<AudioSource>();
 
         forward = Camera.main.transform.forward;
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
@@ -82,13 +87,14 @@ public class PlayerCtrl : MonoBehaviour
         curLifeCnt = maxLifeCnt;
         curSkillCnt = maxSkillCnt;
         isDie = false;
+        transform.position = Vector3.zero;
     }
 
 
     void Update()
     {
         
-        //if (!UIManager.Instance.isUIOn())
+        if (!UIManager.Instance.isUIOn() && GameManager.Instance.isPlay)
         {
             //공격,특수공격  
             attackDelay += Time.deltaTime;
@@ -241,8 +247,9 @@ public class PlayerCtrl : MonoBehaviour
     IEnumerator Dash()
     {
         isDash = true;
-        dashEffect.SetActive(isDash);        
-        transform.position += transform.forward * dashPower;
+        dashEffect.SetActive(isDash);
+        sound.Play();
+        transform.position += transform.forward * dashPower * Time.deltaTime;
         yield return new WaitForSeconds(0.2f);
         isDash = false;
         dashEffect.SetActive(isDash);
@@ -259,57 +266,57 @@ public class PlayerCtrl : MonoBehaviour
     public void EffectOff()
     {
         attackEffect.SetActive(false);
-    }
+    }    
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("EnemyWeapon") && curHp > 0)
-        {
-            if (other.GetComponent<MEnemyCtrl>().enemyState == MEnemyCtrl.ENEMYSTATE.ATTACK)
-            {
-                playerState = PLAYERSTATE.HIT;
-                Debug.Log("Hit!!!");
-                OnDamage(other.GetComponent<MEnemyCtrl>().dmg);
-            }            
-        }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("EnemyWeapon") && curHp > 0)
+    //    {
+    //        if (other.GetComponent<MEnemyCtrl>().enemyState == MEnemyCtrl.ENEMYSTATE.ATTACK)
+    //        {
+    //            playerState = PLAYERSTATE.HIT;
+    //            Debug.Log("Hit!!!");
+    //            OnDamage(other.GetComponent<MEnemyCtrl>().dmg);
+    //        }            
+    //    }
 
-        if (other.CompareTag("BossWeapon") && curHp > 0)
-        {
-            if (other.GetComponentInParent<BossCtrl>().bossState == BossCtrl.BOSSSTATE.ATTACK)
-            {
-                playerState = PLAYERSTATE.HIT;
-                Debug.Log("Hit!!!");
-                OnDamage(other.GetComponent<BossCtrl>().dmg);
-            }
-        }
+    //    if (other.CompareTag("BossWeapon") && curHp > 0)
+    //    {
+    //        if (other.GetComponentInParent<Boss2Ctrl>().bossState == Boss2Ctrl.BOSSSTATE.ATTACK)
+    //        {
+    //            playerState = PLAYERSTATE.HIT;
+    //            Debug.Log("Hit!!!");
+    //            OnDamage(other.GetComponent<Boss2Ctrl>().dmg);
+    //        }
+    //    }
 
-        if (other.CompareTag("BossSkillEffect") && curHp > 0)
-        {
-            playerState = PLAYERSTATE.HIT;
-            Debug.Log("Skill Hit");
-            OnDamage(other.GetComponent<Boss1Skill2Projectile>().dmg);
-        }
-        if (other.CompareTag("BossSkillEffect") && curHp <= 0)
-        {
-            playerState = PLAYERSTATE.HIT;
-            Debug.Log("Skill Hit");
-            OnDamage(other.GetComponent<Boss1Skill2Projectile>().dmg);
-        }
+    //    if (other.CompareTag("BossSkillEffect") && curHp > 0)
+    //    {
+    //        playerState = PLAYERSTATE.HIT;
+    //        Debug.Log("Skill Hit");
+    //        OnDamage(other.GetComponent<Boss1Skill2Projectile>().dmg);
+    //    }
+    //    if (other.CompareTag("BossSkillEffect") && curHp <= 0)
+    //    {
+    //        playerState = PLAYERSTATE.HIT;
+    //        Debug.Log("Skill Hit");
+    //        OnDamage(other.GetComponent<Boss1Skill2Projectile>().dmg);
+    //    }
 
-        if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon") || other.CompareTag("BossSkillEffect") || other.CompareTag("BambooSpear")) && curHp <= 0 && curLifeCnt > 0)
-        {
-            Debug.Log("hp가 0보다 낮아졌습니다.");
-            Revive();
-            UIManager.Instance.UpdateLife();
-        }
+    //    if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon") || other.CompareTag("BossSkillEffect") || other.CompareTag("BambooSpear")) && curHp <= 0 && curLifeCnt > 0)
+    //    {
+    //        Debug.Log("hp가 0보다 낮아졌습니다.");
+    //        Revive();
+    //        UIManager.Instance.UpdateLife();
+    //    }
 
-        if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon") || other.CompareTag("BossSkillEffect") || other.CompareTag("BambooSpear")) && curHp <= 0 && curLifeCnt <= 0)
-        {
-            playerState = PLAYERSTATE.DEATH;
-            isDie = true;
-            PlayerDie();
-        }
-    }
+    //    if ((other.CompareTag("EnemyWeapon") || other.CompareTag("BossWeapon") || other.CompareTag("BossSkillEffect") || other.CompareTag("BambooSpear")) && curHp <= 0 && curLifeCnt <= 0)
+    //    {
+    //        playerState = PLAYERSTATE.DEATH;
+    //        isDie = true;
+    //        PlayerDie();
+    //    }
+    //}
 
     void OnDamage(float _dmg)
     {
@@ -327,6 +334,7 @@ public class PlayerCtrl : MonoBehaviour
     IEnumerator PlayerDie()
     {
         isDie = false;
+        saveNLoadManager.PlayerInfoSave(playerNum);
         yield return new WaitForSeconds(5.0f);
         Debug.Log("Player Die... 마을로 돌아갑니다.");
     }

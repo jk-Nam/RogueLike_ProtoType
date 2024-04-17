@@ -664,7 +664,7 @@ MonoBehaviour:
   skill2Effect: {fileID: 0}
   skill1Pos: {fileID: 0}
   skill2Pos: {fileID: 0}
-  hp: 1200
+  hp: 400
   rotSpeed: 10
   attackDist: 5
   attackCoolTime: 3

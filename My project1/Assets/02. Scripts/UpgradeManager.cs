@@ -40,6 +40,7 @@ public class UpgradeManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 UIManager.Instance.upgradeUI.SetActive(true);
+                UIManager.Instance.pressEU.SetActive(false);
             }
         }
 
@@ -48,6 +49,7 @@ public class UpgradeManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 UIManager.Instance.upgradeUI.SetActive(false);
+                UIManager.Instance.pressEU.SetActive(true);
             }
         }
     }

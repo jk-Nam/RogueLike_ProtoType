@@ -16,7 +16,7 @@ public class Potion : Item
 
     public PotionType potionType;
 
-    public Canvas priceUI;
+    public DDOL priceUI;
     public Text priceTxt;
 
     public int price;

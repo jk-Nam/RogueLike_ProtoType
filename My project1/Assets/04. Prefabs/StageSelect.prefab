@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4669221976245150201}
-  - component: {fileID: -6631087754469643335}
+  - component: {fileID: 2700409847964139036}
   - component: {fileID: -2288732668899584207}
   m_Layer: 0
-  m_Name: Sun_Gate
+  m_Name: StageSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ Transform:
   - {fileID: 5058474426863859681}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 9.373, z: 0}
---- !u!114 &-6631087754469643335
+--- !u!114 &2700409847964139036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7288414114027930898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da462d1f8af8e4e4da5d9496783c944f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d4e00e1e4c6a194dbb23108d8479178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &-2288732668899584207
@@ -85,7 +85,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

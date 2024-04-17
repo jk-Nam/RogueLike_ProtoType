@@ -8,6 +8,7 @@ public class Sword : MonoBehaviour, IWeapon
 {
     PlayerCtrl playerCtrl;
     public Animator anim;
+    public AudioSource[] sound;
     public PLAYERSTATE playerState;
 
     public float dmg = 10.0f;
@@ -21,6 +22,7 @@ public class Sword : MonoBehaviour, IWeapon
     {
         playerCtrl = GetComponentInParent<PlayerCtrl>();
         anim = GetComponentInParent<Animator>();
+        sound = GetComponents<AudioSource>();
     }
 
     public IEnumerator Attack()
@@ -38,11 +40,13 @@ public class Sword : MonoBehaviour, IWeapon
         }
 
         anim.SetTrigger("Attack" + playerCtrl.currentAttack);
+        sound[0].Play();
+        playerCtrl.attackDelay = 0.0f;
         AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
         Debug.Log("Attack" + playerCtrl.currentAttack);
 
-        playerCtrl.attackDelay = 0.0f;
-        yield return new WaitForSeconds(clipInfo[0].clip.length);
+        //yield return new WaitForSeconds(clipInfo[0].clip.length / 2);
+        yield return new WaitForSeconds(1.0f);
         //if (playerCtrl.attackDelay >= 1.0f)
         //{
         //    playerCtrl.playerState = PLAYERSTATE.IDLE;
@@ -58,7 +62,7 @@ public class Sword : MonoBehaviour, IWeapon
             anim.SetTrigger("SAttack");
             playerCtrl.sAttackDelay = 0.0f;
             AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
-            yield return new WaitForSeconds(clipInfo[0].clip.length);
+            yield return new WaitForSeconds(clipInfo[0].clip.length / 2);
             playerCtrl.playerState = PLAYERSTATE.IDLE;
         }
     }
@@ -70,7 +74,11 @@ public class Sword : MonoBehaviour, IWeapon
             UIManager.Instance.UpdateSkill();
             anim.SetTrigger("Skill");
             AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
-            yield return new WaitForSeconds(clipInfo[0].clip.length);
+            yield return new WaitForSeconds(1.5f);
+            playerCtrl.SKillEffect.SetActive(true);
+            sound[1].Play();
+            yield return new WaitForSeconds(clipInfo[0].clip.length - 1.5f);
+            playerCtrl.SKillEffect.SetActive(false);
             playerCtrl.playerState = PLAYERSTATE.IDLE;
         }
     }

@@ -19,6 +19,13 @@ public class WeaponStand : MonoBehaviour
     public Button axeUpgradeBtn;
     public Button bowUpgradeBtn;
 
+    private void Start()
+    {
+        weaponMgr = GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>();
+        sword = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Sword>();
+        axe = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Axe>();
+        bow = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Bow>();
+    }
 
     void Update()
     {

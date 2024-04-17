@@ -11,7 +11,7 @@ public class CameraCtrl : MonoBehaviour
 
     void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
 

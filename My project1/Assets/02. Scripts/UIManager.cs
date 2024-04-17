@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
         //pressEQ.SetActive(false);
         //pressEU.SetActive(false);
         //pressES.SetActive(false);
+        playerInfo.SetActive(true);
 
         curLife = maxLife;
         maxHp.text = playerCtrl.maxHp.ToString();

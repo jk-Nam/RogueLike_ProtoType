@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -13,26 +14,34 @@ public class SpawnEnemy : MonoBehaviour
     public List<Transform> usedPoints = new List<Transform>();
 
     public int curMonsterCnt = 0;
-    public int stageNum = 1;
+    public static int stageNum = 1;
 
     int curSpawnCnt = 0;
-    int maxSpawnCnt = 3;
+    int maxSpawnCnt = 2;
     int maxMonsterCnt = 10;
 
-    private void Awake()
-    {
-        rewardManager = GameObject.FindGameObjectWithTag("RewardManager")?.GetComponent<RewardManager>();
-    }
+    public bool isMonsterClear = false;
+    public static bool isBoss1Clear = false;
+    public static bool isBoss2Clear = false;
+    public static bool isBoss3Clear = false;
 
     void Start()
     {
-        Transform spawnPointGroup = GameObject.FindGameObjectWithTag("RandomSpawnGroup")?.transform;
-        foreach (Transform point in spawnPointGroup)
+        rewardManager = GameObject.FindGameObjectWithTag("RewardManager")?.GetComponent<RewardManager>();        
+        //Transform spawnPointGroup = GameObject.FindGameObjectWithTag("RandomSpawnGroup")?.transform;
+        //foreach (Transform point in spawnPointGroup)
+        //{
+        //    points.Add(point);
+        //}
+        if (SceneManager.GetActiveScene().name == "02. Stage1-Boss" || SceneManager.GetActiveScene().name == "03. Stage2-Boss" || SceneManager.GetActiveScene().name == "04. Stage3-Boss" || SceneManager.GetActiveScene().name == "05. Shop")
         {
-            points.Add(point);
+            return;
         }
-
-        CreateEnemy();
+        else
+        {
+            isMonsterClear = false;
+            CreateEnemy();
+        }
     }
 
 
@@ -77,12 +86,12 @@ public class SpawnEnemy : MonoBehaviour
         if (curMonsterCnt == 0 && curSpawnCnt < maxSpawnCnt)
         {
             CreateEnemy();
-            GameManager.Instance.isClear = false;
+            isMonsterClear = false;
         }
 
-        if (curMonsterCnt ==0 && curSpawnCnt >= maxSpawnCnt)
+        if (curMonsterCnt == 0 && curSpawnCnt == maxSpawnCnt)
         {
-            GameManager.Instance.isClear = true;
+            isMonsterClear = true;
             rewardManager.RandomReward(3);
             UIManager.Instance.rewardUI.SetActive(true);
         }

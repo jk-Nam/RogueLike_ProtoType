@@ -18,6 +18,9 @@ TagManager:
   - Book
   - Food
   - BambooSpear
+  - StageManager
+  - WeaponManager
+  - SNLManager
   layers:
   - Default
   - TransparentFX

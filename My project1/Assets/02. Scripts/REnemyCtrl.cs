@@ -20,6 +20,7 @@ public class REnemyCtrl : MonoBehaviour
 
     PlayerCtrl playerCtrl;
     SpawnEnemy spawnEnemy;
+    AudioSource[] sound;
 
     public Slider hpBar;
 
@@ -52,6 +53,7 @@ public class REnemyCtrl : MonoBehaviour
         spawnEnemy = GameObject.FindGameObjectWithTag("RandomSpawnGroup")?.GetComponent<SpawnEnemy>();
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        sound = GetComponents<AudioSource>();
         StartCoroutine(CheckEnemyState());
         StartCoroutine(EnemyAction());
 
@@ -92,6 +94,7 @@ public class REnemyCtrl : MonoBehaviour
                 AnimatorClipInfo[] curClipInfos;
                 curClipInfos = anim.GetCurrentAnimatorClipInfo(0);
                 yield return new WaitForSeconds(curClipInfos[0].clip.length);
+                sound[2].Play();
             }
             else
             {
@@ -116,7 +119,7 @@ public class REnemyCtrl : MonoBehaviour
                 case ENEMYSTATE.MOVE:
                     Vector3 dir = (playerTr.position - enemyTr.position).normalized;
                     Vector3 movePos = enemyTr.position - dir * Random.Range(5.0f, maxMoveDistance);
-                    agent.SetDestination(movePos);                    
+                    agent.SetDestination(movePos);
                     agent.isStopped = false;
                     anim.SetBool(hashMove, true);
                     anim.SetBool(hashAttack, false);
@@ -130,11 +133,12 @@ public class REnemyCtrl : MonoBehaviour
                     break;
                 case ENEMYSTATE.HIT:
                     anim.SetTrigger(hashHit);
+                    sound[0].Play();
                     curHp -= playerCtrl.dmg;
                     break;
                 case ENEMYSTATE.DIE:
                     anim.SetTrigger(hashDie);
-                    StopCoroutine(CheckEnemyState());
+                    sound[1].Play();                    
                     agent.isStopped = true;
                     agent.velocity = Vector3.zero;
                     Destroy(gameObject, 5.0f);
@@ -176,6 +180,7 @@ public class REnemyCtrl : MonoBehaviour
         if (other.CompareTag("AttackRange") && curHp <= 0)
         {
             enemyState = ENEMYSTATE.DIE;
+            StopCoroutine(EnemyAction());
             hpBar.value = 0;
         }
     }

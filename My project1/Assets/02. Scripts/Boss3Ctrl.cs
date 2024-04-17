@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss3Ctrl : MonoBehaviour
 {
@@ -25,8 +26,10 @@ public class Boss3Ctrl : MonoBehaviour
     public GameObject skill2HitCheck;
     public GameObject skill2Effect;
     public Transform skillPos;
+    public Slider hpBar;
 
-    public float hp = 1200.0f;
+    public float maxHp = 500.0f;
+    public float curHp = 0;
     public float rotSpeed = 10.0f;
     public float attackDist = 3.0f;
     public float attackCoolTime = 3.0f;
@@ -58,6 +61,7 @@ public class Boss3Ctrl : MonoBehaviour
         StartCoroutine(CheckBossState());
         StartCoroutine(BossAction());
         bossAnim.SetTrigger("Start");
+        curHp = maxHp;
     }
 
     void Update()
@@ -154,11 +158,15 @@ public class Boss3Ctrl : MonoBehaviour
                     break;
                 case BOSSSTATE.DIE:
                     isDie = true;
+                    SpawnEnemy.isBoss3Clear = true;
                     bossAnim.SetTrigger("Die");
                     GetComponent<CapsuleCollider>().enabled = false;
                     yield return new WaitForSeconds(5.0f);
                     Destroy(gameObject);
-                    Instantiate(reward, transform.position, Quaternion.Euler(180.0f, 0, 0));
+                    GameObject clearReward = Instantiate(reward, transform.position, Quaternion.Euler(180.0f, 0, 0));
+                    clearReward.transform.position += Vector3.up * 2.0f;
+                    clearReward.transform.localScale = new Vector3(5.0f, 5.0f, 5.0f);
+                    UIManager.Instance.resultUI.SetActive(true);
                     break;
                 default:
                     break;
@@ -217,12 +225,13 @@ public class Boss3Ctrl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("AttackRange") && hp > 0)
+        if (other.CompareTag("AttackRange") && curHp > 0)
         {
-            hp -= playerCtrl.dmg;
+            curHp -= playerCtrl.dmg;
+            hpBar.value = curHp / maxHp;
         }
 
-        if (other.CompareTag("AttackRange") && hp <= 0)
+        if (other.CompareTag("AttackRange") && curHp <= 0)
         {
             bossState = BOSSSTATE.DIE;
             GameManager.Instance.isClear = true;

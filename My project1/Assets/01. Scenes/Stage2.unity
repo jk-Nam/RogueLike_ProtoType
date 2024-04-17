@@ -4086,16 +4086,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponMgr: {fileID: 0}
-  selectBooks: []
-  bookImage: []
-  bookName: []
-  bookDes: []
   myWeapon: {fileID: 0}
+  clearTimeText: {fileID: 0}
+  startTime: 0
   playerCoin: 0
   playerForce: 0
   playerSteel: 0
   upgradeCoin: 0
   isClear: 0
+  isPlay: 0
   totalClearCnt: 0
   swordClearCnt: 0
   axeClearCnt: 0
@@ -6391,7 +6390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &459093544
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17806,6 +17805,7 @@ MonoBehaviour:
   usedPoints: []
   curMonsterCnt: 0
   stageNum: 2
+  isMonsterClear: 0
 --- !u!4 &1267767339
 Transform:
   m_ObjectHideFlags: 0
@@ -22108,7 +22108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1574056661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22619,6 +22619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282f08bbebbe7f4428a7b3f6dbbf60b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiList: []
   playerInfo: {fileID: 888179529}
   weaponStandUI: {fileID: 0}
   questUI: {fileID: 0}
@@ -22630,6 +22631,10 @@ MonoBehaviour:
   rewardUI: {fileID: 0}
   weaponUpgradeUI: {fileID: 0}
   resultUI: {fileID: 0}
+  selectBooks: []
+  bookImage: []
+  bookName: []
+  bookDes: []
   curHp: {fileID: 1971113160}
   maxHp: {fileID: 2051270680}
   curSkill: {fileID: 1120031323}
@@ -22637,6 +22642,13 @@ MonoBehaviour:
   coinCnt: {fileID: 708961564}
   forceCnt: {fileID: 499443475}
   steelCnt: {fileID: 1479591642}
+  totClearCnt: {fileID: 0}
+  swordClearCnt: {fileID: 0}
+  swordConCnt: {fileID: 0}
+  spearClearCnt: {fileID: 0}
+  spearConCnt: {fileID: 0}
+  bowClearCnt: {fileID: 0}
+  bowConCnt: {fileID: 0}
   hpBar: {fileID: 1952966466}
   lifeImages:
   - {fileID: 873605235}

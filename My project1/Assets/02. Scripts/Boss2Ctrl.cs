@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Boss2Ctrl : MonoBehaviour
 {
     public enum BOSSSTATE
     {
         IDLE = 0,
-        Trace = 1,
-        ATTACK = 2,
-        SKILL1 = 3,
-        SKILL2 = 4,
-        DIE = 5
+        ATTACK = 1,
+        SKILL1 = 2,
+        SKILL2 = 3,
+        DIE = 4
     }
 
     public BOSSSTATE bossState;
@@ -21,15 +22,15 @@ public class Boss2Ctrl : MonoBehaviour
     Transform bossTr;
     Transform playerTr;
     Animator bossAnim;
-    NavMeshAgent agent;
 
     public GameObject reward;
-    public GameObject skill2Effect;
-    public Transform skill1Pos;
-    public Transform skill2Pos;
+    public GameObject Skill2Projectile;
+    public Transform skillPos;
+    public Slider hpBar;
 
-    public float hp = 1200.0f;
-    public float rotSpeed = 500.0f;
+    public float maxHp = 500.0f;
+    public float curHp = 0;
+    public float rotSpeed = 10.0f;
     public float attackDist = 3.0f;
     public float attackCoolTime = 3.0f;
     public float skillDist1 = 2.0f;
@@ -40,6 +41,7 @@ public class Boss2Ctrl : MonoBehaviour
     public float skill1Dmg = 13.0f;
     public float skill2Dmg = 15.0f;
     public float moveSpeed;
+    public float kickForce = 1.0f;
 
     public float dwtime = 0;
     public float dwtime1 = 0;
@@ -51,6 +53,7 @@ public class Boss2Ctrl : MonoBehaviour
     [SerializeField] bool isAttack = false;
     [SerializeField] bool isSkill1 = false;
     [SerializeField] bool isSkill2 = false;
+    [SerializeField] bool isTrace = false;
 
 
     void Start()
@@ -58,30 +61,30 @@ public class Boss2Ctrl : MonoBehaviour
         playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
         bossAnim = GetComponent<Animator>();
         bossTr = GetComponent<Transform>();
-        playerTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerTr = GameObject.FindWithTag("Player").GetComponent<Transform>();
         StartCoroutine(CheckBossState());
         StartCoroutine(BossAction());
-        agent = GetComponent<NavMeshAgent>();
+        curHp = maxHp;
     }
 
     void Update()
     {
         CheckSkillCoolTime();
 
-        if (bossState == BOSSSTATE.SKILL2)
+        if (isTrace)
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerTr.position, Time.deltaTime * moveSpeed);
+            bossAnim.SetBool("IsTrace", true);
+            transform.position = Vector3.SmoothDamp(transform.position, playerTr.position, ref vel, 0.5f);
         }
+
+
     }
 
     IEnumerator CheckBossState()
     {
-        AnimatorClipInfo[] curClipInfos;
-        curClipInfos = bossAnim.GetCurrentAnimatorClipInfo(0);
-
         while (!isDie)
         {
-            yield return new WaitForSeconds(curClipInfos[0].clip.length);
+            yield return new WaitForSeconds(1f);
             if (bossState == BOSSSTATE.DIE)
             {
                 yield break;
@@ -89,22 +92,17 @@ public class Boss2Ctrl : MonoBehaviour
 
             float distance = Vector3.Distance(playerTr.position, bossTr.position);
 
-            if (distance >= skillDist2)
+            if (distance <= attackDist && isAttack)
             {
-                bossState = BOSSSTATE.Trace;
-            }
-
-            if (distance <= skillDist2 && isSkill2)
-            {
-                bossState = BOSSSTATE.SKILL2;
+                bossState = BOSSSTATE.ATTACK;
             }
             else if (distance >= skillDist1 && isSkill1)
             {
-                bossState = BOSSSTATE.SKILL1;
+                bossState = BOSSSTATE.SKILL1;                
             }
-            else if (distance <= attackDist && isAttack)
+            else if (distance <= skillDist2 && isSkill2)
             {
-                bossState = BOSSSTATE.ATTACK;
+                bossState = BOSSSTATE.SKILL2;
             }
             else
             {
@@ -122,19 +120,14 @@ public class Boss2Ctrl : MonoBehaviour
                 case BOSSSTATE.IDLE:
                     transform.LookAt(playerTr.position);
                     break;
-                case BOSSSTATE.Trace:
-                    agent.SetDestination(playerTr.position);
-                    break;
                 case BOSSSTATE.ATTACK:
                     if (isAttack)
                     {
-                        AnimatorClipInfo[] curClipInfos;
-                        curClipInfos = bossAnim.GetCurrentAnimatorClipInfo(0);
-
                         transform.LookAt(playerTr.position);
                         bossAnim.SetTrigger("Attack");
                         isAttack = false;
-                        yield return new WaitForSeconds(curClipInfos[0].clip.length);
+                        yield return new WaitForSeconds(attackCoolTime);
+                        isAttack = true;
                         bossState = BOSSSTATE.IDLE;
                     }
                     else
@@ -143,12 +136,11 @@ public class Boss2Ctrl : MonoBehaviour
                 case BOSSSTATE.SKILL1:
                     if (isSkill1)
                     {
-                        AnimatorClipInfo[] curClipInfos;
-                        curClipInfos = bossAnim.GetCurrentAnimatorClipInfo(0);
                         transform.LookAt(playerTr.position);
-                        bossAnim.SetTrigger("Skill1");
-                        yield return new WaitForSeconds(curClipInfos[0].clip.length);
-                        isSkill1 = false;
+                        isTrace = true;
+                        //bossAnim.SetTrigger("Skill1");
+                        //isSkill1 = false;
+                        yield return new WaitForSeconds(2.0f);                        
                         bossState = BOSSSTATE.IDLE;
                     }
                     else
@@ -158,12 +150,10 @@ public class Boss2Ctrl : MonoBehaviour
                     if (isSkill2)
                     {
                         transform.LookAt(playerTr.position);
+                        GameObject projectile = Instantiate(Skill2Projectile, skillPos.position, Quaternion.identity);
                         bossAnim.SetTrigger("Skill2");
-                        //agent.SetDestination(playerTr.position);
-                        //GameObject effect = Instantiate(skill2Effect, skill2Pos.position, Quaternion.identity);
-                        yield return new WaitForSeconds(5.0f);
                         isSkill2 = false;
-                        bossAnim.SetTrigger("Skill2End");
+                        yield return new WaitForSeconds(2.0f);
                         bossState = BOSSSTATE.IDLE;
                     }
                     else
@@ -171,11 +161,14 @@ public class Boss2Ctrl : MonoBehaviour
                     break;
                 case BOSSSTATE.DIE:
                     isDie = true;
+                    SpawnEnemy.isBoss2Clear = true;
                     bossAnim.SetTrigger("Die");
                     GetComponent<CapsuleCollider>().enabled = false;
                     yield return new WaitForSeconds(5.0f);
                     Destroy(gameObject);
-                    Instantiate(reward, transform.position, Quaternion.Euler(180.0f, 0, 0));
+                    GameObject clearReward = Instantiate(reward, transform.position, Quaternion.Euler(180.0f, 0, 0));
+                    clearReward.transform.position += Vector3.up * 2.0f;
+                    clearReward.transform.localScale = new Vector3(5.0f, 5.0f, 5.0f);
                     break;
                 default:
                     break;
@@ -222,21 +215,6 @@ public class Boss2Ctrl : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("AttackRange") && hp > 0)
-        {
-            hp -= playerCtrl.dmg;
-        }
-
-        if (other.CompareTag("AttackRange") && hp <= 0)
-        {
-            bossState = BOSSSTATE.DIE;
-        }
-    }
-
-
-
 
     private void OnDrawGizmos()
     {
@@ -256,6 +234,34 @@ public class Boss2Ctrl : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackDist);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AttackRange") && curHp > 0)
+        {
+            curHp -= playerCtrl.dmg;
+            hpBar.value = curHp / maxHp;
+        }
+
+        if (other.CompareTag("AttackRange") && curHp <= 0)
+        {
+            bossState = BOSSSTATE.DIE;
+        }
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            isTrace = false;
+            bossAnim.SetBool("IsTrace", false);
+            if (bossState == BOSSSTATE.SKILL1)
+            {
+                bossAnim.SetTrigger("Skill1");
+                isSkill1 = false;
+            }
         }
     }
 }

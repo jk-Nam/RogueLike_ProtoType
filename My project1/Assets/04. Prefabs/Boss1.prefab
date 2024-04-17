@@ -1244,7 +1244,7 @@ MonoBehaviour:
   reward: {fileID: 4202719468892172190, guid: d098dcb8e7a6e75468277c19fb2eb74c, type: 3}
   Skill2Projectile: {fileID: 3526405161904995975, guid: dc98307ee84f12741bd825651741360c, type: 3}
   skillPos: {fileID: 4819172101699402194}
-  hp: 1200
+  hp: 500
   rotSpeed: 500
   attackDist: 4
   attackCoolTime: 5

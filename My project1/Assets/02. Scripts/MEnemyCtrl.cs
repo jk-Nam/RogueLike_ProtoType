@@ -38,6 +38,7 @@ public class MEnemyCtrl : MonoBehaviour
 
     NavMeshAgent agent;
     Animator anim;
+    AudioSource[] sound;
 
     readonly int hashTrace = Animator.StringToHash("IsTrace");
     readonly int hashAttack = Animator.StringToHash("IsAttack");
@@ -52,6 +53,7 @@ public class MEnemyCtrl : MonoBehaviour
         spawnEnemy = GameObject.FindGameObjectWithTag("RandomSpawnGroup")?.GetComponent<SpawnEnemy>();
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        sound = GetComponents<AudioSource>();
         StartCoroutine(CheckEnemyState());
         StartCoroutine(EnemyAction());
 
@@ -134,12 +136,13 @@ public class MEnemyCtrl : MonoBehaviour
                     break;
                 case ENEMYSTATE.HIT:
                     anim.SetTrigger(hashHit);
+                    sound[0].Play();
                     curHp -= playerCtrl.dmg;
                     agent.isStopped = false;
                     break;
                 case ENEMYSTATE.DIE:
                     anim.SetTrigger(hashDie);
-                    StopCoroutine(CheckEnemyState());
+                    sound[1].Play();
                     agent.isStopped = true;
                     agent.velocity = Vector3.zero;
                     Destroy(gameObject, 5.0f);
@@ -174,6 +177,7 @@ public class MEnemyCtrl : MonoBehaviour
     {
         if (other.CompareTag("AttackRange") && curHp > 0)
         {
+            Debug.Log("hit");
             enemyState = ENEMYSTATE.HIT;
             hpBar.value = curHp / maxHp;
         }
@@ -181,6 +185,7 @@ public class MEnemyCtrl : MonoBehaviour
         if (other.CompareTag("AttackRange") && curHp <= 0)
         {
             enemyState = ENEMYSTATE.DIE;
+            StopCoroutine(EnemyAction());
             hpBar.value = 0;
         }
     }

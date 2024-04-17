@@ -20,7 +20,7 @@ public class Book : Item
     }
 
     public BooksType booksType;
-    public Canvas priceUI;
+    public DDOL priceUI;
     public Text priceTxt;
 
     public int price;
